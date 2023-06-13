@@ -1,9 +1,10 @@
 import React from 'react'
 import Footer from './Footer'
-
+import Header from './Header/Header'
 const HomePage = () => {
     return (
         <div>
+            <Header />
             <Footer />
         </div>
 
