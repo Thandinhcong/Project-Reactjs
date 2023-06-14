@@ -1,5 +1,6 @@
 .footerr a:hover {
-    color: rgb(223, 66, 39);
+    color: rgb(66, 84, 224);
+    text-decoration: underline;
 }
 
 .footerr a {

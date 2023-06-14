@@ -6,7 +6,7 @@ import Logo from '../layout-client/Header/menu/Logo';
 import User from '../layout-client/Header/user/user';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
-import Footer from '../layout-client/Footer';
+import Footer from '../layout-client/footer/Footer';
 import Logistics from '../layout-client/main/Logistics';
 import Blog from '../layout-client/main/Blog';
 const Signin = () => {

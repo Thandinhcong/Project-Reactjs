@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import "./style.css";
+import "../style.css";
 const Footer = () => {
     return (
         <>
@@ -83,9 +83,9 @@ const Footer = () => {
                                 {/* Links */}
                                 <h6 className=" fw-bold mb-4">Hỗ trợ khách hàng</h6>
                                 <p>
-                                    <a href="#!" className=" text-decoration-none">
+                                    <Link to="/lien-he" className=" text-decoration-none">
                                         Liên hệ
-                                    </a>
+                                    </Link>
                                 </p>
                                 <p>
                                     <a href="#!" className=" text-decoration-none">
