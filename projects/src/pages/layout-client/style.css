@@ -1,0 +1,76 @@
+.footerr a:hover {
+    color: rgb(223, 66, 39);
+}
+
+.footerr a {
+    color: rgb(78, 76, 76);
+}
+
+.logistics p {
+    font-family: 'Gill Sans';
+}
+
+.logistics {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    font-size: 12px;
+    border-bottom: 1px solid rgb(211, 200, 200);
+    margin-bottom: 50px;
+}
+
+.logistic-item {
+    padding: 5px;
+    border-right: 1px solid rgb(181, 181, 166);
+    height: 30px;
+    margin-right: 30px;
+
+}
+
+.logistic-item:nth-child(4) {
+    border-right: none;
+}
+
+.form-home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.form-home input {
+    width: 300px;
+}
+
+.form-home input,
+.form-home button {
+    height: 50px;
+    display: flex;
+    padding: 10px;
+}
+
+.form-home button {
+    background-color: black;
+    color: azure;
+    border: none;
+    border-radius: 0px 5px 5px 0px;
+
+}
+
+.form-home input:focus {
+    outline: none;
+}
+
+.blog {
+    padding: 20px;
+    text-align: center;
+}
+
+.blog p {
+    text-decoration: underline;
+    font-size: 10px;
+}
+
+.blog i {
+    font-size: 10px;
+}

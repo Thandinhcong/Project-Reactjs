@@ -6,7 +6,7 @@ const Menu = () => {
         <div className='menu'>
             <nav>
                 <ul>
-                    <li><Link to="">SALE</Link></li>
+                    <li ><Link to="" className='text-danger'>SALE</Link></li>
                     <li><Link to="">BTS XUÂN/HÈ 2023</Link></li>
                     <li><Link to="">TRANG PHỤC</Link></li>
                     <li><Link to="">GIÀY DÉP</Link></li>

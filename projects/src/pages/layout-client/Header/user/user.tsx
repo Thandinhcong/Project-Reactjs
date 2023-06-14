@@ -1,12 +1,17 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { faCartShopping, faUser } from '@fortawesome/free-solid-svg-icons';
 import "./user.css"
-const Signin = () => {
+import { Link } from 'react-router-dom';
+const User = () => {
     return (
         <div className='signin d-flex'>
-            <span className="material-symbols-outlined">person</span>
-            <FontAwesomeIcon icon={faCartShopping} />
+            <Link to="/signin" className='text-dark'>
+                <FontAwesomeIcon icon={faUser} className='me-4' />
+            </Link>
+            <Link to="" className='text-dark'>
+                <FontAwesomeIcon icon={faCartShopping} />
+            </Link>
             <div className="input-wrapper">
                 <button className="icon">
                     <svg
@@ -20,14 +25,14 @@ const Signin = () => {
                             strokeLinejoin="round"
                             strokeLinecap="round"
                             strokeWidth="1.5"
-                            stroke="#fff"
+                            stroke="#000"
                             d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z"
                         />
                         <path
                             strokeLinejoin="round"
                             strokeLinecap="round"
                             strokeWidth="1.5"
-                            stroke="#fff"
+                            stroke="#000"
                             d="M22 22L20 20"
                         />
                     </svg>
@@ -40,4 +45,4 @@ const Signin = () => {
     )
 }
 
-export default Signin
+export default User

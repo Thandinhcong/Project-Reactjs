@@ -2,7 +2,13 @@
     text-decoration: none;
     margin: 0 15px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: black;
 }
+
+.menu a:hover {
+    text-decoration: underline;
+}
+
 
 .menu li {
     display: inline-block;
@@ -10,6 +16,7 @@
 
 .menu {
     text-align: center;
+
 }
 
 .logo a {
@@ -26,11 +33,15 @@
 
 
 .header {
-    display: flex;
-    justify-content: space-evenly;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 15px 15px;
 }
 
 .signin {
     display: flex;
     justify-content: flex-end;
+    margin-right: 40px;
+    font-size: 25px;
+    padding: 10px 20px;
 }

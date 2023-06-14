@@ -4,7 +4,7 @@ import "../header.css"
 const Logo = () => {
     return (
         <div className='logo'>
-            <Link to="">Thandinh.</Link>
+            <Link to="/">Thandinh.</Link>
         </div>
     )
 }
