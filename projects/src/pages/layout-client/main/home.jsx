@@ -5,7 +5,7 @@ import Logistics from './Logistics'
 import Blog from './Blog'
 import Banner from '../Header/banner/banner'
 import Brand from './Brand'
-import Product from './Product'
+import Product from './products/Product'
 const HomePage = () => {
     return (
         <div>

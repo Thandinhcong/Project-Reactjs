@@ -1,0 +1,26 @@
+.deltail {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    margin-top: 30px;
+}
+
+.deltail img {
+    width: 80%;
+}
+
+.count button {
+    border: none;
+    padding: 5px 10px;
+    font-size: 20px;
+}
+
+.count label {
+    font-size: 20px;
+    padding: 5px 10px;
+    background-color: aliceblue;
+}
+
+.salenfil {
+    display: grid;
+
+}

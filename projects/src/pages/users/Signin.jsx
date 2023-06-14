@@ -24,7 +24,7 @@ const Signin = () => {
                 </div>
                 <section className='d-flex border'>
                     <div className='left'>
-                        <img src="./login.jpg" alt="" width={500} height={500} />
+                        <img src="./login.jpg" alt="" width={500} height={450} />
                         <div className='text'>
                             <h5 className='mb-5 fs-4'>Khách hàng mới</h5>
                             <p>Bằng cách tạo tài khoản , bạn có thể</p>
@@ -32,7 +32,7 @@ const Signin = () => {
                             <li>Tích lũy chỉ tiêu và xếp hạng</li>
                             <li>Nhận các ưu đãi đặc biệt của Thandinh và các nhãn hàng khác thuộc hệ thống Thái Bình</li>
                             <i className='mb-3 mt-3'>(*) Khách hàng là thành viên thuộc Chương trình Khách hàng thân thiết Tam Sơn Elite Club, vui lòng điền đúng SĐT đã đăng ký thành viên tại Tam Sơn khi tạo tài khoản mới để được hưởng các ưu đãi đặc biệt tại Sandro.</i> <br />
-                            <a href="" className='btn btn-dark mt-4 mb-5'>Tạo tài khoản</a>
+                            <a href="/dang-ki" className='btn btn-dark mt-4 mb-5'>Tạo tài khoản</a>
                         </div>
                     </div>
                     <div className='form'>

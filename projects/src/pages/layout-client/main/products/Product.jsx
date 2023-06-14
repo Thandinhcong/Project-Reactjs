@@ -1,5 +1,5 @@
 import React from 'react';
-import "./main.css";
+import "../main.css";
 const Product = () => {
     return (
         <div className='container'>
@@ -13,7 +13,7 @@ const Product = () => {
             </nav>
             <div className='product-list'>
                 <div className='product-list-item'>
-                    <img src="../aothun.jpg" alt="" />
+                    <a href="./chi-tiet-san-pham"><img src="../aothun.jpg" alt="" /></a>
                     <div className='products-list-icon d-flex justify-content-between'>
                         <p className='text-secondary'>KHÁC</p>
                         <span class="material-symbols-outlined">

@@ -3,7 +3,7 @@ import "./banner.css"
 const Banner = () => {
     return (
         <div className='banner1 '>
-            <div className='container banner'>
+            <div className='container-xxl banner'>
                 <img src="../banner.png" alt="" />
                 <div className='banner-item'>
                     <h5><i>2023 New Arrivals</i></h5>
