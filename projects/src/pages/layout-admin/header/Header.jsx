@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
 const HeaderAdmin = () => {
     return (
         <div>
@@ -10,6 +9,7 @@ const HeaderAdmin = () => {
                         <div id="content">
                             {/* Topbar */}
                             <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                                <p className='mt-3 fs-5 me-5 ms-5'>THANDINH.</p>
                                 <Link to="/admin" className='ms-5 me-5 text-decoration-none'>ADMIN</Link>
                                 <button
                                     id="sidebarToggleTop"
@@ -86,11 +86,11 @@ const HeaderAdmin = () => {
                                             aria-expanded="false"
                                         >
                                             <span className="mr-2 d-none d-lg-inline text-gray-600 small">
-                                                Douglas McGee
+                                                ĐinhThan
                                             </span>
                                             <img
                                                 className="img-profile rounded-circle"
-                                                src="img/undraw_profile.svg"
+                                                src="./"
                                             />
                                         </a>
                                         {/* Dropdown - User Information */}

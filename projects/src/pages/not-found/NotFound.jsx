@@ -25,7 +25,7 @@ const NotFound = () => {
                                 <p className="text-gray-500 mb-0">
                                     Không tìm thấy đường dẫn
                                 </p>
-                                <a href="index.html">← Vui lòng trở lại</a>
+                                <a href="admin">← Vui lòng trở lại</a>
                             </div>
                         </div>
                         {/* /.container-fluid */}
