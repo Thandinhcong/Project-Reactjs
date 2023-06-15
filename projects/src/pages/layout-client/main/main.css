@@ -25,6 +25,7 @@
 
 .products-list-icon span {
     position: relative;
+    cursor: pointer;
 }
 
 .products-list-icon span::after {
