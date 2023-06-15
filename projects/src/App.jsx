@@ -6,6 +6,8 @@ import Contacts from "./pages/layout-client/contacts/Contacts"
 import DeltailPage from "./pages/layout-client/main/deltail-product/Deltail-product"
 import LayoutAdmin from "./pages/layout-admin/dashbroand"
 import NotFound from "./pages/not-found/NotFound"
+import UpdateProduct from "./components/admin/products/UpdateProduct"
+import AddProduct from "./components/admin/products/AddProduct"
 
 function App() {
   return (
@@ -22,9 +24,9 @@ function App() {
         </Route>
         <Route path="admin" element={<Outlet />}>
           <Route index element={<LayoutAdmin />} />
-          {/* <Route path="dang-ki" element={<Signup />} />
-          <Route path="lien-he" element={<Contacts />} />
-          <Route path="chi-tiet-san-pham" element={<DeltailPage />} /> */}
+          <Route path="cap-nhat-san-pham" element={< UpdateProduct />} />
+          <Route path="them-san-pham" element={<AddProduct />} />
+          <Route path="chi-tiet-san-pham" element={<DeltailPage />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>

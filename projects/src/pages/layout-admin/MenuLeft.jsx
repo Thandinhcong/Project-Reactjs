@@ -2,11 +2,11 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const MenuLeft = () => {
-    return <div className="admin-cate  pt-5 col-2">
+    return <div className="admin-cate container col-3  pt-5  border">
         <Link to="/admin" className="text-decoration-none text-dark">
-            <div className="d-flex gap-1  ">
-                <span className="material-symbols-outlined fs-1">phone_android</span>
-                <p className="mt-2">Điện thoại</p>
+            <div className="d-flex gap-1 border ">
+                <img width="50" height="50" src="https://img.icons8.com/carbon-copy/100/clothes.png" alt="clothes" />
+                <p className="mt-2 ">Quần áo</p>
             </div>
         </Link>
         <Link to="danh-sach-binh-luan" className="text-decoration-none text-dark">
