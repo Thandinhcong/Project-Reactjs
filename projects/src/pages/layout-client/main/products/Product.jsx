@@ -1,5 +1,6 @@
 import React from 'react';
 import "../main.css";
+import { Link } from 'react-router-dom';
 const Product = () => {
     return (
         <div className='container'>
@@ -13,7 +14,7 @@ const Product = () => {
             </nav>
             <div className='product-list'>
                 <div className='product-list-item'>
-                    <a href="./chi-tiet-san-pham"><img src="../aothun.jpg" alt="" /></a>
+                    <Link to="./chi-tiet-san-pham"><img src="../aothun.jpg" alt="" /></Link>
                     <div className='products-list-icon d-flex justify-content-between'>
                         <p className='text-secondary'>KHÁC</p>
                         <span class="material-symbols-outlined">
