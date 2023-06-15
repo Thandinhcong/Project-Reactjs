@@ -5,6 +5,7 @@ import Signup from "./pages/users/Signup"
 import Contacts from "./pages/layout-client/contacts/Contacts"
 import DeltailPage from "./pages/layout-client/main/deltail-product/Deltail-product"
 import LayoutAdmin from "./pages/layout-admin/dashbroand"
+import NotFound from "./pages/not-found/NotFound"
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="lien-he" element={<Contacts />} />
           <Route path="chi-tiet-san-pham" element={<DeltailPage />} /> */}
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   )
