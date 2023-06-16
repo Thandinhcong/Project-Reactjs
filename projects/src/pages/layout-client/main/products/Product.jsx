@@ -12,6 +12,13 @@ const Product = () => {
                 <a href="#">PHỤ KIỆN & TRANG SỨC</a>
                 <a href="#">TÚI XÁCH & BALO</a>
             </nav>
+            <div>
+                <select className='form-select w-25 mt-3 mb-3'>
+                    <option value="" className='w-25'>Lọc theo giá tiền</option>
+                    <option value="">Giá cao nhất</option>
+                    <option value="">Giá thấp nhất</option>
+                </select>
+            </div>
             <div className='product-list'>
                 <div className='product-list-item'>
                     <Link to="./chi-tiet-san-pham"><img src="../aothun.jpg" alt="" /></Link>
