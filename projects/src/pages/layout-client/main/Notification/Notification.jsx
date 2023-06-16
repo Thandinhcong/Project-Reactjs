@@ -19,7 +19,7 @@ const Notification = () => {
                 <div className="notification">
                     <p>
                         <h3>Thông báo khuyến mãi</h3>
-                        <h1>SALE 70%</h1>
+                        <h1 className='sale-noti'>SALE 70%</h1>
                         Thông báo Thandinhclothes đang có chương trình khuyến mãi đặc biệt cho khách hàng nhân dịp blackfileday <br />
                         <a href="">Xem ngay</a>
                     </p>
