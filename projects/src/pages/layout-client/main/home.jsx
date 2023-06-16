@@ -6,6 +6,7 @@ import Blog from './Blog'
 import Banner from '../Header/banner/banner'
 import Brand from './Brand'
 import Product from './products/Product'
+import Scroll from './scrolls/scrolls'
 const HomePage = () => {
     return (
         <div>
@@ -15,6 +16,7 @@ const HomePage = () => {
             <Product />
             <Logistics />
             <Blog />
+            <Scroll />
             <Footer />
         </div>
 

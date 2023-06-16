@@ -36,6 +36,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     padding: 15px 15px;
+
 }
 
 .signin {
@@ -44,4 +45,14 @@
     margin-right: 40px;
     font-size: 25px;
     padding: 10px 20px;
+}
+
+.Header {
+    z-index: 2;
+    background-color: rgb(182, 173, 162);
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
 }

@@ -7,7 +7,7 @@ import Signin from './user/user';
 import Clothes from './menu/Clothes';
 const Header = () => {
     return (
-        <div>
+        <div className='Header container-fluid'>
             <section className='header '>
                 <Clothes />
                 <Logo />

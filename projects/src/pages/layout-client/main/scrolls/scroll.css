@@ -1,0 +1,28 @@
+.App {
+    /* Các quy tắc CSS khác cho trang web của bạn */
+    position: relative;
+}
+
+.scrollTop {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background-color: #ccc;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.scrollTop:hover {
+    opacity: 1;
+}
+
+.fa-angle-up {
+    color: #040404;
+}
