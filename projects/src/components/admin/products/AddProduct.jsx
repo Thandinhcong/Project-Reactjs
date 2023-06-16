@@ -4,9 +4,9 @@ import MenuLeft from '../../../pages/layout-admin/MenuLeft'
 
 const AddProduct = () => {
     return (
-        <div>
+        <div className='container-xxl'>
             <HeaderAdmin />
-            <div className='row row-cols-2 container-xxl '>
+            <div className='row row-cols-2 container-xxl border'>
                 <MenuLeft />
                 <section className='col-9 '>
                     <h3 className='text-center mt-2 mb-2'>Thêm sản phẩm</h3>

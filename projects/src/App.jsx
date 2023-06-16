@@ -8,6 +8,8 @@ import LayoutAdmin from "./pages/layout-admin/dashbroand"
 import NotFound from "./pages/not-found/NotFound"
 import UpdateProduct from "./components/admin/products/UpdateProduct"
 import AddProduct from "./components/admin/products/AddProduct"
+import ListCategorys from "./pages/layout-admin/ListCate"
+import Statistical from "./components/admin/statistical/Statistical"
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
           <Route path="cap-nhat-san-pham" element={< UpdateProduct />} />
           <Route path="them-san-pham" element={<AddProduct />} />
           <Route path="chi-tiet-san-pham" element={<DeltailPage />} />
+          <Route path="loai-hang" element={<ListCategorys />} />
+          <Route path="thong-ke" element={<Statistical />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>

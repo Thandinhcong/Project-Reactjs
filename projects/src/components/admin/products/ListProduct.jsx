@@ -12,8 +12,8 @@ const ListProduct = () => {
                 <Link to="/admin/them-san-pham" className='btn btn-outline-primary'>Thêm sản phẩm</Link>
 
             </div>
-            <div class="table table-responsive-xxl mt-3">
-                <table class="table table-bordered table-striped">
+            <div className="table table-responsive-xxl mt-3">
+                <table classNames="table table-bordered table-striped">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -29,7 +29,7 @@ const ListProduct = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="">
+                        <tr >
                             <td >1</td>
                             <td>R1C2</td>
                             <td><img src="https://shopdunk.com/images/thumbs/0008045_gold_550.webp" width={50} /></td>
@@ -39,7 +39,7 @@ const ListProduct = () => {
                             <td></td>
                             <td></td>
                             <td>
-                                <Link to="/cap-nhat-san-pham" className='btn btn-primary me-2'>Cập nhật</Link>
+                                <Link to="/admin/cap-nhat-san-pham" className='btn btn-primary me-2'>Cập nhật</Link>
                                 <button className='btn btn-primary'>Xóa</button>
                             </td>
                         </tr>

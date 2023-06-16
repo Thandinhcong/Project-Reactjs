@@ -9,12 +9,10 @@ const MenuLeft = () => {
                 <p className="mt-2 ">Quần áo</p>
             </div>
         </Link>
-        <Link to="danh-sach-binh-luan" className="text-decoration-none text-dark">
+        <Link to="/admin/loai-hang" className="text-decoration-none text-dark">
             <div className="d-flex gap-1 mt-4">
-                <span className="material-symbols-outlined fs-1">
-                    laptop_mac
-                </span>
-                <p className="mt-2">Comment</p>
+                <img width="50" height="50" src="https://img.icons8.com/external-flaticons-flat-flat-icons/64/external-trademark-copyright-law-flaticons-flat-flat-icons-2.png" alt="external-trademark-copyright-law-flaticons-flat-flat-icons-2" />
+                <p className="mt-2">Loại hàng</p>
             </div>
         </Link>
         <Link to="" className="text-decoration-none text-dark">
@@ -33,12 +31,10 @@ const MenuLeft = () => {
                 <p className="mt-2">ÂM thanh</p>
             </div>
         </Link>
-        <Link to="user" className="text-decoration-none text-dark">
+        <Link to="/admin/thong-ke" className="text-decoration-none text-dark">
             <div className="d-flex gap-1 mt-4">
-                <span className="material-symbols-outlined fs-1">
-                    account_circle
-                </span>
-                <p className="mt-2">User</p>
+                <img width="30" height="30" src="https://img.icons8.com/dotty/80/analytics.png" alt="analytics" />
+                <p className="mt-2">Thống kê</p>
             </div>
         </Link>
     </div>
