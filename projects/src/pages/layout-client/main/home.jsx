@@ -7,10 +7,12 @@ import Banner from '../Header/banner/banner'
 import Brand from './Brand'
 import Product from './products/Product'
 import Scroll from './scrolls/scrolls'
+import Notification from './Notification/Notification'
 const HomePage = () => {
     return (
         <div>
             <Header />
+            <Notification />
             <Banner />
             <Brand />
             <Product />

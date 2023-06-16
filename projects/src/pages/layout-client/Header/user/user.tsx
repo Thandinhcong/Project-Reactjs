@@ -5,7 +5,7 @@ import "./user.css";
 import { Link } from 'react-router-dom';
 const User = () => {
     return (
-        <div className='signinn '>
+        <div className='signinn ' style={{ marginLeft: "100px" }}>
             <Link to="/signin" className='text-dark'>
                 <FontAwesomeIcon icon={faUser} className=' me-4' />
             </Link>
