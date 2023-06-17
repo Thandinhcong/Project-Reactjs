@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 import "./signin.css";
 import Clothes from '../layout-client/Header/menu/Clothes';
 import Logo from '../layout-client/Header/menu/Logo';
@@ -9,7 +9,36 @@ import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import Footer from '../layout-client/footer/Footer';
 import Logistics from '../layout-client/main/Logistics';
 import Blog from '../layout-client/main/Blog';
+import { useLocalStorage } from '../useLocalStore/useLocalStore';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { schemaSignin } from '../schemas/products';
+import { FormSignin } from '../../instances/accounts';
 const Signin = () => {
+    const navigate = useNavigate();
+    const [user, SetUser] = useLocalStorage('user', null)
+    const { register, handleSubmit, formState: { errors } } = useForm({
+        resolver: yupResolver(schemaSignin)
+    })
+    const OnHandleSubmit = async (users) => {
+        try {
+            const { data: { accessToken, user } } = await FormSignin(users)
+            SetUser({
+                accessToken,
+                ...user
+            })
+            if (user.role === "admin") {
+                navigate('/admin');
+                alert("Đăng nhập admin thành công")
+            } else {
+                navigate('/');
+                alert("Đăng nhập thành công")
+            }
+            console.log(data);
+        } catch (error) {
+            alert("Thông tin tài khoản hoặc mật khẩu không chính sác")
+        }
+    }
     useEffect(() => {
         window.scrollTo(0, 0)
     })
@@ -53,22 +82,24 @@ const Signin = () => {
                                 --------
                             </div>
                         </div>
-                        <form action="" className='form-login'>
+                        <form onSubmit={handleSubmit(OnHandleSubmit)} className='form-login'>
                             <label htmlFor="">Email</label>
-                            <input type="email" className='form-control' />
+                            <input type="email" className='form-control' {...register('email')} />
+                            <div className='text-danger'>{errors.email && errors.email.message}</div>
                             <label htmlFor="">Mật khẩu</label>
-                            <input type="password" className='form-control' />
+                            <input type="password" className='form-control' {...register('password')} />
+                            <div className='text-danger'>{errors.password && errors.password.message}</div>
                             <button className='btn btn-primary'>Đăng nhập</button>
                         </form>
                         <a href="" >Quên mật khẩu?</a>
                     </div>
                 </section>
-            </div>
+            </div >
             <Logistics />
             <Blog />
             <Footer />
             <Outlet />
-        </div>
+        </div >
     )
 
 }

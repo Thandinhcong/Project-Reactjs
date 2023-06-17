@@ -20,7 +20,7 @@ const DeltailPage = () => {
         <div>
             <Header />
             <div className='deltail container p-3'>
-                <img src="../aothun.jpg" alt="" />
+                <img src={product.image} alt="" />
                 <div>
                     <div className='d-flex'>
                         <a href="/" className='text-decoration-none' >
