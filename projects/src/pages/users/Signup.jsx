@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from "react-hook-form";
 import { Link, Outlet, useNavigate } from 'react-router-dom';
@@ -28,6 +28,9 @@ const SignupPage = () => {
             console.log(error);
         }
     }
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
     return (
         <div>
             <Header />
