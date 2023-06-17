@@ -22,7 +22,6 @@ const SignupPage = () => {
             setTimeout(() => {
                 navigate('/signin');
             }, 5000);
-            console.log(data);
         } catch (error) {
             alert('có lỗi xảy ra vui lòng thử lại');
             console.log(error);

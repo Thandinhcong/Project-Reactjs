@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link, Outlet } from 'react-router-dom';
 import "./signin.css";
 import Clothes from '../layout-client/Header/menu/Clothes';
@@ -10,6 +10,9 @@ import Footer from '../layout-client/footer/Footer';
 import Logistics from '../layout-client/main/Logistics';
 import Blog from '../layout-client/main/Blog';
 const Signin = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    })
     return (
         <div>
             <div className='header'>
