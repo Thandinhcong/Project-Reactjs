@@ -67,6 +67,15 @@
     margin-bottom: 20px;
 }
 
+.name {
+    font-style: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.orinal {
+    /* font-size: 15px; */
+}
+
 .product-list-item img {
     width: 100%;
 }
@@ -84,7 +93,7 @@
 
 .orinal {
     text-decoration: line-through;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .paging {

@@ -6,6 +6,7 @@ import { getAllProduct } from '../../../../instances/products';
 const Product = () => {
     const [products, setProducts] = useState([]);
     const [visibleProducts, setVisibleProducts] = useState(10);
+    const [sortOption, setSortOption] = useState("");
 
     const ListProductClient = async () => {
         const { data } = await getAllProduct();
@@ -26,7 +27,19 @@ const Product = () => {
         style: "currency",
         currency: "VND"
     })
+    const handleSortOptionChange = (event) => {
+        const selectedOption = event.target.value;
+        setSortOption(selectedOption);
 
+        let sortedProducts = [...products];
+        if (selectedOption === "highestPrice") {
+            sortedProducts.sort((a, b) => b.price - a.price);
+        } else if (selectedOption === "lowestPrice") {
+            sortedProducts.sort((a, b) => a.price - b.price);
+        }
+
+        setProducts(sortedProducts);
+    };
     return (
         <div className='container'>
             <h2 className='text-center m-4'>SẢN PHẨM MỚI</h2>
@@ -38,10 +51,10 @@ const Product = () => {
                 <a href="#">TÚI XÁCH & BALO</a>
             </nav>
             <div>
-                <select className='form-select w-25 mt-3 mb-3'>
+                <select className='form-select w-25 mt-3 mb-3' value={sortOption} onChange={handleSortOptionChange}>
                     <option value="" className='w-25'>Lọc theo giá tiền</option>
-                    <option value="">Giá cao nhất</option>
-                    <option value="">Giá thấp nhất</option>
+                    <option value="highestPrice">Giá cao nhất</option>
+                    <option value="lowestPrice">Giá thấp nhất</option>
                 </select>
             </div>
             <div className='product-list'>
@@ -55,8 +68,8 @@ const Product = () => {
                                     favorite
                                 </span>
                             </div>
-                            <p className='fs-5'>{item.name}</p>
-                            <p className='fs-4 text-primary'>{VND.format(item.price)}</p>
+                            <p className='name'>{item.name}</p>
+                            <p className='fs-5 text-primary'>{VND.format(item.price)}</p>
                             <div className='d-flex justify-content-between'>
                                 <p className='orinal'>{VND.format(item.original_price)}</p>
                                 <span
