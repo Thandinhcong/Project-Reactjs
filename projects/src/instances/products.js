@@ -1,7 +1,7 @@
 import instance from "./instances"
 
 export const getAllProduct = () => {
-    const uri = '/products/'
+    const uri = '/products'
     return instance.get(uri);
 }
 export const getOneProduct = (id) => {
