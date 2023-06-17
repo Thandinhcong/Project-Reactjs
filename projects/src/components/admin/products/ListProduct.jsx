@@ -79,7 +79,7 @@ const ListProduct = () => {
                 <div>
                     {Array.from({ length: totalPages }, (_, index) => (
                         <button
-                            className="btn btn-primary"
+                            className="btn btn-primary me-2"
                             key={index + 1}
                             onClick={() => paginate(index + 1)}
                         >

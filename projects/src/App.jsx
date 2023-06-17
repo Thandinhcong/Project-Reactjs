@@ -22,7 +22,7 @@ function App() {
           <Route path="signin" element={<Signin />} />
           <Route path="dang-ki" element={<Signup />} />
           <Route path="lien-he" element={<Contacts />} />
-          <Route path="chi-tiet-san-pham" element={<DeltailPage />} />
+          <Route path="chi-tiet-san-pham/:id" element={<DeltailPage />} />
         </Route>
         <Route path="admin" element={<Outlet />}>
           <Route index element={<LayoutAdmin />} />

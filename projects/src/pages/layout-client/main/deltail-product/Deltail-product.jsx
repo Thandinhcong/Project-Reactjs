@@ -1,8 +1,21 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Header from '../../Header/Header';
 import Footer from '../../footer/Footer';
 import "./deltail.css";
+import { useParams } from 'react-router-dom';
+import { getOneProduct, VND } from '../../../../instances/products';
 const DeltailPage = () => {
+    const [product, setProducts] = useState({});
+    const { id } = useParams();
+    console.log(id);
+    const fetchProduct = async () => {
+        const { data } = await getOneProduct(id);
+        setProducts(data.products)
+    }
+    useEffect(() => {
+        fetchProduct();
+        window.scrollTo(0, 0);
+    }, [])
     return (
         <div>
             <Header />
@@ -17,14 +30,19 @@ const DeltailPage = () => {
                             <p className='text-secondary '>QUẦN ÁO</p>
                         </a>
                     </div>
-                    <h3>ÁO THUN NAM CAO CẤP</h3>
+                    <h3>{product.name}</h3>
                     <div className='d-flex'>
-                        <p className='fs-4 text-primary'>200,000đ</p>
-                        <p className='mt-2 ms-4'>400,000đ</p>
-
+                        <p className='fs-4 text-primary'>{VND.format(product.price)}</p>
+                        <p className='mt-2 ms-4'>{VND.format(product.original_price)}</p>
                     </div>
-                    <p>(Tiết kiệm : <span className='text-primary'>700,000đ</span> )</p>
-                    <span>Trích đoạn chuẩn của Lorem Ipsum được sử dụng từ thế kỉ thứ 16 và được tái bản sau đó cho những người quan tâm đến nó. Đoạn 1.10.32 và 1.10.33 trong cuốn “De Finibus Bonorum et Malorum” của Cicero cũng được tái bản lại theo đúng cấu trúc gốc, kèm theo phiên bản tiếng Anh được dịch bởi H. Rackham vào năm 1914</span>
+                    <p>(Tiết kiệm : <span
+                        className='text-primary'
+                    >
+                        {VND.format((product.original_price) - (product.price))}
+
+                    </span>)
+                    </p>
+                    <span>{product.description}</span>
                     <div className='d-flex mt-5 mb-5'>
                         <div className='count'>
                             <button>-</button>

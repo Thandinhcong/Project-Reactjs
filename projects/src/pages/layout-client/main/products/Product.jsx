@@ -1,7 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import "../main.css";
 import { Link } from 'react-router-dom';
+import { getAllProduct } from '../../../../instances/products';
 const Product = () => {
+    const [products, setProducts] = useState([])
+    const ListProductClient = async () => {
+        const { data } = await getAllProduct();
+        setProducts(data.products)
+    }
+    useEffect(() => {
+        ListProductClient();
+    }, [])
+    const VND = new Intl.NumberFormat('vi-VN', {
+        style: "currency",
+        currency: "VND"
+    })
     return (
         <div className='container'>
             <h2 className='text-center m-4'>SẢN PHẨM MỚI</h2>
@@ -20,156 +33,32 @@ const Product = () => {
                 </select>
             </div>
             <div className='product-list'>
-                <div className='product-list-item'>
-                    <Link to="./chi-tiet-san-pham"><img src="../aothun.jpg" alt="" /></Link>
-                    <div className='products-list-icon d-flex justify-content-between'>
-                        <p className='text-secondary'>KHÁC</p>
-                        <span class="material-symbols-outlined">
-                            favorite
-                        </span>
-                    </div>
-                    <p className='fs-5'>Áo khoác thun nam</p>
-                    <p className='fs-4 text-primary'>599,000đ</p>
-                    <div className='d-flex justify-content-between'>
-                        <p className='orinal'>1,300,000đ</p><span className='sale'>-54%</span>
-                    </div>
-                </div>
-                <div className='product-list-item'>
-                    <img src="../aothun.jpg" alt="" />
-                    <div className='products-list-icon d-flex justify-content-around'>
-                        <p>KHÁC</p>
-                        <span class="material-symbols-outlined">
-                            favorite
-                        </span>
-                    </div>
-                    <p>Áo khoác thun nam</p>
-                    <p>599,000đ</p>
-                    <div className='d-flex justify-content-between'>
-                        <p>1,300,000đ</p><span>-54%</span>
-
-                    </div>
-                </div>
-                <div className='product-list-item'>
-                    <img src="../aothun.jpg" alt="" />
-                    <div className='products-list-icon d-flex justify-content-around'>
-                        <p>KHÁC</p>
-                        <span class="material-symbols-outlined">
-                            favorite
-                        </span>
-                    </div>
-                    <p>Áo khoác thun nam</p>
-                    <p>599,000đ</p>
-                    <div className='d-flex justify-content-between'>
-                        <p>1,300,000đ</p><span>-54%</span>
-
-                    </div>
-                </div>
-                <div className='product-list-item'>
-                    <img src="../aothun.jpg" alt="" />
-                    <div className='products-list-icon d-flex justify-content-around'>
-                        <p>KHÁC</p>
-                        <span class="material-symbols-outlined">
-                            favorite
-                        </span>
-                    </div>
-                    <p>Áo khoác thun nam</p>
-                    <p>599,000đ</p>
-                    <div className='d-flex justify-content-between'>
-                        <p>1,300,000đ</p><span>-54%</span>
-
-                    </div>
-                </div>
-                <div className='product-list-item'>
-                    <img src="../aothun.jpg" alt="" />
-                    <div className='products-list-icon d-flex justify-content-around'>
-                        <p>KHÁC</p>
-                        <span class="material-symbols-outlined">
-                            favorite
-                        </span>
-                    </div>
-                    <p>Áo khoác thun nam</p>
-                    <p>599,000đ</p>
-                    <div className='d-flex justify-content-between'>
-                        <p>1,300,000đ</p><span>-54%</span>
-
-                    </div>
-                </div>
-                <div className='product-list-item'>
-                    <img src="../aothun.jpg" alt="" />
-                    <div className='products-list-icon d-flex justify-content-around'>
-                        <p>KHÁC</p>
-                        <span class="material-symbols-outlined">
-                            favorite
-                        </span>
-                    </div>
-                    <p>Áo khoác thun nam</p>
-                    <p>599,000đ</p>
-                    <div className='d-flex justify-content-between'>
-                        <p>1,300,000đ</p><span>-54%</span>
-
-                    </div>
-                </div>
-                <div className='product-list-item'>
-                    <img src="../aothun.jpg" alt="" />
-                    <div className='products-list-icon d-flex justify-content-around'>
-                        <p>KHÁC</p>
-                        <span class="material-symbols-outlined">
-                            favorite
-                        </span>
-                    </div>
-                    <p>Áo khoác thun nam</p>
-                    <p>599,000đ</p>
-                    <div className='d-flex justify-content-between'>
-                        <p>1,300,000đ</p><span>-54%</span>
-
-                    </div>
-                </div> <div className='product-list-item'>
-                    <img src="../aothun.jpg" alt="" />
-                    <div className='products-list-icon d-flex justify-content-around'>
-                        <p>KHÁC</p>
-                        <span class="material-symbols-outlined">
-                            favorite
-                        </span>
-                    </div>
-                    <p>Áo khoác thun nam</p>
-                    <p>599,000đ</p>
-                    <div className='d-flex justify-content-between'>
-                        <p>1,300,000đ</p><span>-54%</span>
-
-                    </div>
-                </div> <div className='product-list-item'>
-                    <img src="../aothun.jpg" alt="" />
-                    <div className='products-list-icon d-flex justify-content-around'>
-                        <p>KHÁC</p>
-                        <span class="material-symbols-outlined">
-                            favorite
-                        </span>
-                    </div>
-                    <p>Áo khoác thun nam</p>
-                    <p>599,000đ</p>
-                    <div className='d-flex justify-content-between'>
-                        <p>1,300,000đ</p><span>-54%</span>
-
-                    </div>
-                </div> <div className='product-list-item'>
-                    <img src="../aothun.jpg" alt="" />
-                    <div className='products-list-icon d-flex justify-content-around'>
-                        <p>KHÁC</p>
-                        <span class="material-symbols-outlined">
-                            favorite
-                        </span>
-                    </div>
-                    <p>Áo khoác thun nam</p>
-                    <p>599,000đ</p>
-                    <div className='d-flex justify-content-between'>
-                        <p>1,300,000đ</p><span>-54%</span>
-
-                    </div>
-                </div>
+                {products.map((item, index) => {
+                    return (
+                        <div className='product-list-item'>
+                            <Link to={`/chi-tiet-san-pham/${item._id}`}><img src={item.image} className='mb-2' alt="ảnh sản phẩm" /></Link>
+                            <div className='products-list-icon d-flex justify-content-between'>
+                                <p className='text-secondary'>KHÁC</p>
+                                <span className="material-symbols-outlined">
+                                    favorite
+                                </span>
+                            </div>
+                            <p className='fs-5'>{item.name}</p>
+                            <p className='fs-4 text-primary'>{VND.format(item.price)}</p>
+                            <div className='d-flex justify-content-between'>
+                                <p className='orinal'>{VND.format(item.original_price)}</p>
+                                <span
+                                    className='sale'
+                                >
+                                    {Math.round(((item.original_price - item.price) / item.original_price) * 100)}%
+                                </span>
+                            </div>
+                        </div>
+                    )
+                })}
             </div>
             <div className='paging text-center '>
                 <a href="#" className='text-decoration-none btn btn-dark'>Xem thêm</a>
-
             </div>
         </div>
     )

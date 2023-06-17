@@ -20,3 +20,7 @@ export const deleteProduct = (id) => {
     const uri = '/products/' + id
     return instance.delete(uri);
 }
+export const VND = new Intl.NumberFormat('vi-VN', {
+    style: "currency",
+    currency: "VND"
+})
