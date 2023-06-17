@@ -2,19 +2,31 @@ import React, { useEffect, useState } from 'react';
 import "../main.css";
 import { Link } from 'react-router-dom';
 import { getAllProduct } from '../../../../instances/products';
+
 const Product = () => {
-    const [products, setProducts] = useState([])
+    const [products, setProducts] = useState([]);
+    const [visibleProducts, setVisibleProducts] = useState(10);
+
     const ListProductClient = async () => {
         const { data } = await getAllProduct();
         setProducts(data.products)
     }
+
+    const handleLoadMore = () => {
+        setVisibleProducts(prevCount => prevCount + 5);
+    };
+
+    const productsToShow = products.slice(0, visibleProducts);
+
     useEffect(() => {
         ListProductClient();
     }, [])
+
     const VND = new Intl.NumberFormat('vi-VN', {
         style: "currency",
         currency: "VND"
     })
+
     return (
         <div className='container'>
             <h2 className='text-center m-4'>SẢN PHẨM MỚI</h2>
@@ -33,9 +45,9 @@ const Product = () => {
                 </select>
             </div>
             <div className='product-list'>
-                {products.map((item, index) => {
+                {productsToShow.map((item, index) => {
                     return (
-                        <div className='product-list-item'>
+                        <div className='product-list-item' key={index}>
                             <Link to={`/chi-tiet-san-pham/${item._id}`}><img src={item.image} className='mb-2' alt="ảnh sản phẩm" /></Link>
                             <div className='products-list-icon d-flex justify-content-between'>
                                 <p className='text-secondary'>KHÁC</p>
@@ -58,10 +70,12 @@ const Product = () => {
                 })}
             </div>
             <div className='paging text-center '>
-                <a href="#" className='text-decoration-none btn btn-dark'>Xem thêm</a>
+                {visibleProducts < products.length && (
+                    <button className='btn btn-dark' onClick={handleLoadMore}>Xem thêm</button>
+                )}
             </div>
         </div>
     )
 }
 
-export default Product
+export default Product;
