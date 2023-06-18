@@ -107,3 +107,19 @@
 .menu a {
     text-decoration: none;
 }
+
+@media (max-width:769px) {
+    .products {
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .products img {
+        width: 100%;
+    }
+
+    .brand-item {
+        width: 150px;
+        margin: 5px;
+    }
+}
