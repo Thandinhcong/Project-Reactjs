@@ -30,10 +30,6 @@ const User = () => {
         );
         setSearchResults(results);
     };
-    const handleSearchResultClick = (productId) => {
-        // Chuyển hướng đến trang chi tiết sản phẩm khi ấn vào một kết quả tìm kiếm
-        navigate(`/chi-tiet-san-pham/${productId}`);
-    };
     useEffect(() => {
         ListProduct();
     }, []);
@@ -68,11 +64,9 @@ const User = () => {
                             <div
                                 key={product._id}
                                 className='search-result-item'
-                                onClick={() => handleSearchResultClick(product._id)}
                             >
                                 <Link
                                     to={`/chi-tiet-san-pham/${product._id}`
-
                                     } className='text-decoration-none'>
                                     <p>{product.name}</p>
 

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import "../main.css";
+import "./product.css";
 import { Link } from 'react-router-dom';
 import { getAllProduct } from '../../../../instances/products';
 
@@ -50,8 +51,8 @@ const Product = () => {
                 <a href="#">PHỤ KIỆN & TRANG SỨC</a>
                 <a href="#">TÚI XÁCH & BALO</a>
             </nav>
-            <div>
-                <select className='form-select w-25 mt-3 mb-3' value={sortOption} onChange={handleSortOptionChange}>
+            <div className='form-select-cha'>
+                <select className='form-select  mt-3 mb-3' value={sortOption} onChange={handleSortOptionChange}>
                     <option value="" className='w-25'>Lọc theo giá tiền</option>
                     <option value="highestPrice">Giá cao nhất</option>
                     <option value="lowestPrice">Giá thấp nhất</option>
