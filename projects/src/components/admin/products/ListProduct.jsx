@@ -39,7 +39,7 @@ const ListProduct = () => {
                     Thêm sản phẩm
                 </Link>
             </div>
-            <div className='mt-3'>
+            <div className='mt-3 table-responsive'>
                 <table className='table table-bordered'>
                     <thead >
                         <tr>

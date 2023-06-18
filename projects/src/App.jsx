@@ -11,6 +11,7 @@ import AddProduct from "./components/admin/products/AddProduct"
 import ListCategorys from "./pages/layout-admin/ListCate"
 import Statistical from "./components/admin/statistical/Statistical"
 import Favorite from "./pages/layout-client/productslove/productLove"
+import LayoutAdminCheck from "./pages/layout-admin/layoutAdmin"
 
 function App() {
   return (
@@ -26,7 +27,7 @@ function App() {
           <Route path="chi-tiet-san-pham/:id" element={<DeltailPage />} />
           <Route path="san-pham-yeu-thich" element={<Favorite />} />
         </Route>
-        <Route path="admin" element={<Outlet />}>
+        <Route path="admin" element={<LayoutAdminCheck />}>
           <Route index element={<LayoutAdmin />} />
           <Route path="cap-nhat-san-pham" element={< UpdateProduct />} />
           <Route path="them-san-pham" element={<AddProduct />} />
