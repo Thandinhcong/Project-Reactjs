@@ -41,3 +41,10 @@
     filter: brightness(90%) blur(1px);
     /* Làm mờ ảnh */
 }
+
+@media (min-width:769px) {
+    .signin {
+        display: flex;
+        flex-direction: column;
+    }
+}

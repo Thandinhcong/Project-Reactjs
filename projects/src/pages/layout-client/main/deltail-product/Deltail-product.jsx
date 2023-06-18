@@ -7,7 +7,6 @@ import { getOneProduct, VND } from '../../../../instances/products';
 const DeltailPage = () => {
     const [product, setProducts] = useState({});
     const { id } = useParams();
-    console.log(id);
     const fetchProduct = async () => {
         const { data } = await getOneProduct(id);
         setProducts(data.products)

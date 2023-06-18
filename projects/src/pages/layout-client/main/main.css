@@ -109,6 +109,8 @@
 }
 
 @media (max-width:769px) {
+
+    /* brand  */
     .products {
         overflow-x: auto;
         white-space: nowrap;
@@ -121,5 +123,18 @@
     .brand-item {
         width: 150px;
         margin: 5px;
+    }
+
+    /* logistics */
+    .logistics {
+        width: 100%;
+        display: grid;
+        grid-template-columns: none;
+        border-right: none;
+    }
+
+    .logistic-item {
+        border-right: none;
+
     }
 }
