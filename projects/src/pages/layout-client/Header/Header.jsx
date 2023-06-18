@@ -18,8 +18,8 @@ const Header = () => {
                 </section>
                 <Menu />
             </div>
-            <div className='mobile container'>
-                <nav className="mobile-item navbar navbar-expand-lg bg-body-tertiary">
+            <div className='mobile '>
+                <nav className="mobile-item navbar navbar-expand-lg bg-body-tertiary ">
                     <div className="container-fluid">
                         <button
                             className="navbar-toggler"
@@ -36,7 +36,7 @@ const Header = () => {
                             Thandinh.
                         </Link>
                         <FontAwesomeIcon icon={faCartShopping} className='me-2' />
-                        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                        <div className="collapse navbar-collapse p-3 " id="navbarSupportedContent">
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li className="nav-item">
                                     <Link className="nav-link fw-medium" aria-current="page" to="#">

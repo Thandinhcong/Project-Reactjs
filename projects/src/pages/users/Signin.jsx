@@ -45,10 +45,8 @@ const Signin = () => {
     })
     return (
         <div>
-            <div className=''>
-                <Header />
-            </div>
-            <div className='container p-5'>
+            <Header />
+            <div className='container mt-5'>
                 <div>
                     <FontAwesomeIcon icon={faAngleLeft} /><Link to="/" className=' text-decoration-none text-dark'> <span className='back'>Trở lại</span></Link>
                 </div>

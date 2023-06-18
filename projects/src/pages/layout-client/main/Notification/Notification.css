@@ -54,6 +54,7 @@
 @media (max-width:768px) {
     .notification {
         width: 90%;
+        top: 71px;
     }
 
     .notification button {
