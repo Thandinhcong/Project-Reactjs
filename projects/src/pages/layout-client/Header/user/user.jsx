@@ -9,7 +9,7 @@ const User = () => {
     const [products, setProducts] = useState([]);
     const [searchKeyword, setSearchKeyword] = useState('');
     const [searchResults, setSearchResults] = useState([]);
-
+    const navigate = useNavigate();
     const ListProduct = async () => {
         try {
             const { data } = await getAllProduct();
@@ -30,10 +30,9 @@ const User = () => {
         );
         setSearchResults(results);
     };
-    const handleSearchInputBlur = () => {
-        // Reset kết quả tìm kiếm khi rời khỏi khu vực tìm kiếm
-        setSearchKeyword("");
-        setSearchResults([]);
+    const handleSearchResultClick = (productId) => {
+        // Chuyển hướng đến trang chi tiết sản phẩm khi ấn vào một kết quả tìm kiếm
+        navigate(`/chi-tiet-san-pham/${productId}`);
     };
     useEffect(() => {
         ListProduct();
@@ -56,7 +55,6 @@ const User = () => {
                         placeholder='Tìm kiếm sản phẩm'
                         value={searchKeyword}
                         onChange={handleSearchInputChange}
-                        onBlur={handleSearchInputBlur}
                     />
                 </div>
 
@@ -67,8 +65,15 @@ const User = () => {
                 {searchKeyword && (
                     <div className='search-results'>
                         {searchResults.map((product) => (
-                            <div key={product._id} className='search-result-item'   >
-                                <Link to={`/chi-tiet-san-pham/${product._id}`} className='text-decoration-none'>
+                            <div
+                                key={product._id}
+                                className='search-result-item'
+                                onClick={() => handleSearchResultClick(product._id)}
+                            >
+                                <Link
+                                    to={`/chi-tiet-san-pham/${product._id}`
+
+                                    } className='text-decoration-none'>
                                     <p>{product.name}</p>
 
                                 </Link>
