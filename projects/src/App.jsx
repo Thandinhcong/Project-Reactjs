@@ -10,6 +10,7 @@ import UpdateProduct from "./components/admin/products/UpdateProduct"
 import AddProduct from "./components/admin/products/AddProduct"
 import ListCategorys from "./pages/layout-admin/ListCate"
 import Statistical from "./components/admin/statistical/Statistical"
+import Favorite from "./pages/layout-client/productslove/productLove"
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="dang-ki" element={<Signup />} />
           <Route path="lien-he" element={<Contacts />} />
           <Route path="chi-tiet-san-pham/:id" element={<DeltailPage />} />
+          <Route path="san-pham-yeu-thich" element={<Favorite />} />
         </Route>
         <Route path="admin" element={<Outlet />}>
           <Route index element={<LayoutAdmin />} />

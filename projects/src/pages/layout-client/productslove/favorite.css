@@ -1,0 +1,6 @@
+@media (max-width:769px) {
+    .favorite img {
+        width: 100px;
+        height: 200px;
+    }
+}

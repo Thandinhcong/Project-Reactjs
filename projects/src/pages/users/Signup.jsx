@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from "react-hook-form";
 import { Link, Outlet, useNavigate } from 'react-router-dom';
@@ -22,12 +22,13 @@ const SignupPage = () => {
             setTimeout(() => {
                 navigate('/signin');
             }, 5000);
-            console.log(data);
         } catch (error) {
-            alert('có lỗi xảy ra vui lòng thử lại');
-            console.log(error);
+            alert('Email đã tồn tại');
         }
     }
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
     return (
         <div>
             <Header />
@@ -160,7 +161,7 @@ const SignupPage = () => {
                         </svg>
                         <span>Sign In with Apple</span>
                     </button>
-                    <p className="note">Terms of use &amp; Conditions</p>
+                    <span>Bạn đã có tài khoản? <Link to="/signin">Đăng nhập</Link></span>
                 </form>
 
             </div >

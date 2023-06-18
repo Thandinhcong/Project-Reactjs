@@ -5,7 +5,10 @@ const Notification = () => {
     const [showNotification, setShowNotification] = useState(false);
 
     useEffect(() => {
-        setShowNotification(true);
+        setTimeout(() => {
+
+            setShowNotification(true);
+        }, 5000)
     }, []);
 
     const closeNotification = () => {

@@ -24,3 +24,15 @@
     display: grid;
 
 }
+
+@media (max-width:769px) {
+    .deltail {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .deltail img {
+        width: 100%;
+        align-items: center;
+    }
+}

@@ -4,7 +4,7 @@ export const Signup = (data) => {
     const uri = "/signup"
     return instance.post(uri, data)
 }
-export const Signin = (data) => {
+export const FormSignin = (data) => {
     const uri = "/signin"
     return instance.post(uri, data)
 }
