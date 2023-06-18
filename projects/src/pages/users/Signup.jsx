@@ -161,7 +161,7 @@ const SignupPage = () => {
                         </svg>
                         <span>Sign In with Apple</span>
                     </button>
-                    <p className="note">Terms of use &amp; Conditions</p>
+                    <span>Bạn đã có tài khoản? <Link to="/signin">Đăng nhập</Link></span>
                 </form>
 
             </div >

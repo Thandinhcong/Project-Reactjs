@@ -56,3 +56,32 @@
     width: 100%;
     background-color: #fff;
 }
+
+
+@media(max-width:769px) {
+    .Header {
+        display: none;
+    }
+
+    .mobile {
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        display: block;
+        z-index: 2;
+        padding: 0 5px;
+    }
+}
+
+@media(min-width:1024px) {
+    .Header {
+        display: block;
+    }
+
+    .mobile {
+        display: none;
+    }
+
+
+}

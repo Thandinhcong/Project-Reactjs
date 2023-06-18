@@ -43,6 +43,9 @@ const User = () => {
                 <Link to='' className='text-dark me-4'>
                     <FontAwesomeIcon icon={faCartShopping} />
                 </Link>
+                <Link to='/san-pham-yeu-thich' className='text-decoration-none text-dark'>
+                    <span className="material-symbols-outlined mt-1">favorite</span>
+                </Link>
                 <div className='search'>
                     <input
 

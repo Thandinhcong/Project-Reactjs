@@ -14,6 +14,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schemaSignin } from '../schemas/products';
 import { FormSignin } from '../../instances/accounts';
+import Header from '../layout-client/Header/Header';
 const Signin = () => {
     const navigate = useNavigate();
     const [user, SetUser] = useLocalStorage('user', null)
@@ -44,15 +45,12 @@ const Signin = () => {
     })
     return (
         <div>
-            <div className='header'>
-                <Clothes />
-                <Logo />
-                <User />
+            <div className=''>
+                <Header />
             </div>
             <div className='container p-5'>
                 <div>
-                    <FontAwesomeIcon icon={faAngleLeft} /><Link to="/" className='text-decoration-none text-dark'> <span>Trở lại</span></Link>
-                    <h6 className='mt-2 mb-3'>ĐĂNG NHẬP</h6>
+                    <FontAwesomeIcon icon={faAngleLeft} /><Link to="/" className=' text-decoration-none text-dark'> <span className='back'>Trở lại</span></Link>
                 </div>
                 <div className='signup container mb-5' >
                     <form className="form_container" onSubmit={handleSubmit(OnHandleSubmit)}>
@@ -152,7 +150,8 @@ const Signin = () => {
                             </svg>
                             <span>Đăng nhập với Apple</span>
                         </button>
-                        <p className="note">Terms of use &amp; Conditions</p>
+                        <span>Bạn chưa có tài khoản ? <Link to="/dang-ki">Đăng kí</Link></span>
+
                     </form>
 
                 </div >
