@@ -8,8 +8,7 @@ const LayoutAdminCheck = () => {
     useEffect(() => {
         if (user && user.role !== "admin") {
             alert("Đường dẫn không tồn tại")
-            navigate('/');
-            return;
+            return navigate('/');
         }
     }, [])
     return (
