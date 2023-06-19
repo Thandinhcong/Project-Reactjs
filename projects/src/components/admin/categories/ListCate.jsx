@@ -36,7 +36,7 @@ const ListCate = () => {
                                     <td >{index + 1}</td>
                                     <td>{item.name}</td>
                                     <td><img src="" alt="" width={50} /></td>
-                                    <td >{item.products.length}</td>
+                                    <td>{item.products.length}</td>
                                     <td>
                                         <Link to="/admin/cap-nhat-san-pham" className='btn btn-primary me-2'>Cập nhật</Link>
                                         <button className='btn btn-primary'>Xóa</button>

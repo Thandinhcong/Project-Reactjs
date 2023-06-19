@@ -51,8 +51,8 @@ const ListProduct = () => {
                     Thêm sản phẩm
                 </Link>
             </div>
-            <div className='mt-3 table-responsive overflow-auto'>
-                <table className='table table-bordered overflow-auto' >
+            <div className='mt-3 table-responsive overflow-x-auto w-100'>
+                <table className='table table-bordered ' >
                     <thead >
                         <tr>
                             <th>#</th>
@@ -72,13 +72,13 @@ const ListProduct = () => {
                             <tr key={item._id}>
                                 <td>{index + 1}</td>
                                 <td>{item.name}</td>
-                                <td><img src={item.image} width={50} /></td>
+                                <td><img src={item.image} width={100} /></td>
                                 <td>{item.price}</td>
                                 <td>{item.original_price}</td>
                                 <td>{item.quantity}</td>
-                                <td >{item.description}</td>
-                                <td className=''>{item.salient_features}</td>
-                                <td>
+                                <td style={{ width: "30%" }}>{item.description}</td>
+                                <td style={{ width: "30%" }}>{item.salient_features}</td>
+                                <td style={{ width: "10%" }} className='d-flex'>
                                     <Link to="/admin/cap-nhat-san-pham" className=' me-2'><img width="15" height="15" src="https://img.icons8.com/ios/50/edit--v1.png" alt="edit--v1" /></Link>
                                     <button onClick={() => handleDeleteProduct(item._id)} className='border-0 bg-white'><span className="material-symbols-outlined">delete</span></button>
                                 </td>
