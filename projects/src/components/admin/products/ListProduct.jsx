@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getAllProduct } from '../../../instances/products';
+import { deleteProduct, getAllProduct } from '../../../instances/products';
 
 const ListProduct = () => {
     const [products, setProducts] = useState([]);
@@ -11,7 +11,19 @@ const ListProduct = () => {
         const { data } = await getAllProduct();
         setProducts(data.products);
     };
-
+    const handleDeleteProduct = async (id) => {
+        try {
+            await deleteProduct(id)
+            const confilm = window.confirm("Bạn có muốn xóa không ?")
+            if (confilm) {
+                const updateProduct = products.filter((item) => item._id !== id)
+                setProducts(updateProduct);
+                alert("Xóa thành công")
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentItems = products.slice(indexOfFirstItem, indexOfLastItem);
@@ -39,8 +51,8 @@ const ListProduct = () => {
                     Thêm sản phẩm
                 </Link>
             </div>
-            <div className='mt-3 table-responsive'>
-                <table className='table table-bordered'>
+            <div className='mt-3 table-responsive overflow-auto'>
+                <table className='table table-bordered overflow-auto' >
                     <thead >
                         <tr>
                             <th>#</th>
@@ -68,7 +80,7 @@ const ListProduct = () => {
                                 <td className=''>{item.salient_features}</td>
                                 <td>
                                     <Link to="/admin/cap-nhat-san-pham" className=' me-2'><img width="15" height="15" src="https://img.icons8.com/ios/50/edit--v1.png" alt="edit--v1" /></Link>
-                                    <button className='border-0 bg-white'><span className="material-symbols-outlined">delete</span></button>
+                                    <button onClick={() => handleDeleteProduct(item._id)} className='border-0 bg-white'><span className="material-symbols-outlined">delete</span></button>
                                 </td>
                             </tr>
                         ))}

@@ -6,7 +6,11 @@ const LayoutAdminCheck = () => {
     const user = JSON.parse(localStorage.getItem('user'));
     const navigate = useNavigate();
     useEffect(() => {
-        if (user && user.role !== "admin") {
+        if (!user) {
+            alert("Vui lòng đăng nhập tài khoản để truy cập");
+            return navigate('/');
+        }
+        else if (user && user.role !== "admin") {
             alert("Đường dẫn không tồn tại")
             return navigate('/');
         }

@@ -23,6 +23,7 @@ const ListCate = () => {
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Tên danh mục</th>
+                            <th>Hình ảnh</th>
                             <th>Số lượng</th>
                             <th>Thao tác</th>
 
@@ -34,6 +35,7 @@ const ListCate = () => {
                                 <tr key={item._id} >
                                     <td >{index + 1}</td>
                                     <td>{item.name}</td>
+                                    <td><img src="" alt="" width={50} /></td>
                                     <td >{item.products.length}</td>
                                     <td>
                                         <Link to="/admin/cap-nhat-san-pham" className='btn btn-primary me-2'>Cập nhật</Link>
