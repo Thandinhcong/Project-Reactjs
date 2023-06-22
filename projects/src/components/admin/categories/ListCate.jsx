@@ -6,6 +6,7 @@ const ListCate = () => {
     const [categorys, setCategorys] = useState([]);
     const ListAllCate = async () => {
         const { data } = await ListCates();
+
         setCategorys(data.categorys)
     }
     useEffect(() => {
@@ -15,9 +16,9 @@ const ListCate = () => {
         <div className='col-9 border ' >
             <h3 className='text-center'>Danh sách loại hàng</h3>
             <div className='d-flex justify-content-between'>
-                <Link to="/admin/them-san-pham" className='btn btn-outline-primary mb-2'>Thêm mới</Link>
+                <Link to="/admin/them-loai-hang" className='btn btn-outline-primary mb-2'>Thêm mới</Link>
             </div>
-            <div classNames="table table-responsive-xxl mt-3">
+            <div className="table table-responsive-xxl mt-3">
                 <table className="table table-bordered table-striped">
                     <thead>
                         <tr>
@@ -35,7 +36,7 @@ const ListCate = () => {
                                 <tr key={item._id} >
                                     <td >{index + 1}</td>
                                     <td>{item.name}</td>
-                                    <td><img src="" alt="" width={50} /></td>
+                                    <td><img src={item.image} alt="" width={50} /></td>
                                     <td>{item.products.length}</td>
                                     <td>
                                         <Link to="/admin/cap-nhat-san-pham" className='btn btn-primary me-2'>Cập nhật</Link>

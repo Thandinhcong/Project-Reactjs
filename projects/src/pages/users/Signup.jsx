@@ -23,7 +23,7 @@ const SignupPage = () => {
                 navigate('/signin');
             }, 5000);
         } catch (error) {
-            alert('Email đã tồn tại');
+            alert(' Có lỗi xảy ra vui lòng thử lại');
         }
     }
     useEffect(() => {

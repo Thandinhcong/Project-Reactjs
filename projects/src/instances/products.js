@@ -12,10 +12,6 @@ export const addProduct = (product) => {
     const user = JSON.parse(localStorage.getItem('user'));
     const token = user.accessToken;
     const uri = '/products/';
-    if (!token) {
-        console.log('có lỗi xảy ra');
-        return;
-    }
     return instance.post(uri, product, {
         headers: {
             "Content-Type": "application/json",

@@ -9,6 +9,7 @@ import { addProduct } from '../../../instances/products'
 
 const AddProduct = () => {
     const [categorys, setCategorys] = useState([]);
+    const [sizes, setSizes] = useState([]);
     const ListAllCate = async () => {
         const { data } = await ListCates();
         setCategorys(data.categorys)
@@ -21,12 +22,22 @@ const AddProduct = () => {
     })
     const onHandleSubmit = async (product) => {
         try {
-            const { response } = await addProduct(product);
+            const newProduct = {
+                ...product,
+                size: sizes.map((size) => size.trim())
+            }
+            const { response } = await addProduct(newProduct);
             console.log(response);
         } catch (error) {
-
+            console.log(error);
         }
     }
+    const handleSizesChange = (e) => {
+        const inputSizes = e.target.value;
+        // Tách chuỗi các size thành mảng và lưu vào state
+        const sizesArray = inputSizes.split(',').map((size) => size.trim());
+        setSizes(sizesArray);
+    };
     return (
         <div className='container-xxl'>
             <HeaderAdmin />
@@ -70,7 +81,8 @@ const AddProduct = () => {
                             </div>
                             <div>
                                 <label htmlFor="name" className='form-lable'>Gía khuyến mại</label>
-                                <input type="number"
+                                <input
+                                    type="number"
                                     placeholder='Nhập giá khuyến mại sản phẩm'
                                     className='form-control'
                                     {...register('price')}
@@ -93,20 +105,16 @@ const AddProduct = () => {
                             </div>
                             <div>
                                 <label htmlFor="">Kích cỡ</label>
-                                <select className='form-select'>
-                                    <option value="">kích cỡ</option>
-                                    <option value="">41</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label htmlFor="">Số lượng</label>
                                 <input
-                                    type="number"
+                                    type="text"
+                                    {...register("size")}
                                     className='form-control'
-                                    {...register('quantity')}
+                                    value={sizes.join(', ')}
+                                    onChange={handleSizesChange}
                                 />
-                                <div className='text-danger'>{errors.quantity && errors.quantity.message}</div>
+                                <div>{errors.size && errors.size.message}</div>
                             </div>
+
                         </div>
                         <div className='row row-cols-2'>
                             <div>

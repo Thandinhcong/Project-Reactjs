@@ -20,3 +20,15 @@ export const updateCate = (id, cate) => {
     const uri = "/categorys/" + id
     return instance.put(uri, cate)
 }
+// Hàm để lấy danh sách sản phẩm trong danh mục
+export const getCategoryProducts = async (categoryID) => {
+    try {
+        const response = await instance.get(`/categorys/${categoryID}/products`);
+        return response;
+    } catch (error) {
+        throw new Error('Failed to fetch category products');
+    }
+};
+
+
+
