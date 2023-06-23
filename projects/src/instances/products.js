@@ -20,8 +20,15 @@ export const addProduct = (product) => {
     });
 }
 export const updateProduct = (id, product) => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    const token = user.accessToken;
     const uri = '/products/' + id
-    return instance.put(uri, product);
+    return instance.put(uri, product, {
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        }
+    });
 }
 export const deleteProduct = (id) => {
     const user = JSON.parse(localStorage.getItem('user'));

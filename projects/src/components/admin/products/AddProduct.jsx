@@ -35,7 +35,6 @@ const AddProduct = () => {
             alert("Thêm sản phẩm thành công");
             navigate('/admin');
         } catch (error) {
-            console.log(error);
             alert("Có lỗi xảy ra khi thêm sản phẩm");
         }
     }
@@ -127,8 +126,6 @@ const AddProduct = () => {
                                     type="text"
                                     {...register("sizes")}
                                     className='form-control'
-                                // value={sizes.join(', ')}
-                                // onChange={handleSizesChange}
                                 />
                                 <div className='text-danger'>
                                     {errors.sizes && errors.sizes.message}

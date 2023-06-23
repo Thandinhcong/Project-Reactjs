@@ -4,15 +4,15 @@ import MenuLeft from '../../../pages/layout-admin/MenuLeft'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { getOneProduct } from '../../../instances/products'
+import { UploadImage, getOneProduct, updateProduct } from '../../../instances/products'
 import { schemaUpdateProduct } from '../../../pages/schemas/products'
 import { ListCates } from '../../../instances/categorys'
 
 const UpdateProduct = () => {
     const { id } = useParams();
     const navigate = useNavigate();
-    const [categories, setCategories] = useState([])
-    const [selectCate, setSelectCate] = useState('')
+    const [categories, setCategories] = useState([]);
+    const [image, setImage] = useState(null);
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(schemaUpdateProduct),
         defaultValues: async () => {
@@ -21,17 +21,39 @@ const UpdateProduct = () => {
     })
 
     const onHandleSubmit = async (products) => {
-        products.categoryId = selectCate
-        const response = await UpdateProduct(id, products)
-        navigate('/admin')
+        if (typeof image !== "string") return
+        products.image = image;
+        try {
+            const response = await updateProduct(id, products)
+            alert("cập nhật thành công")
+            navigate('/admin')
+        } catch (error) {
+            console.log(error);
+            alert("Có lỗi xảy ra hãy thử lại")
+        }
+    }
+    const onChangeFile = async (e) => {
+        const files = e.target.files[0];
+        if (files) {
+            try {
+                const Res = await UploadImage({
+                    file: files,
+                    upload_preset: "demo-upload",
+                });
+                if (Res) {
+                    setImage(Res.data.url);
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        }
     }
     const fetchProductById = async (id) => {
         const { data } = await getOneProduct(id);
-        console.log("data :", data);
         return data.products;
     }
     const handleCate = async () => {
-        const { data } = await ListCates(data)
+        const { data } = await ListCates()
         setCategories(data.categorys)
     }
     useEffect(() => {
@@ -57,7 +79,17 @@ const UpdateProduct = () => {
                         </div>
                         <div>
                             <label htmlFor="name" className='form-lable'> image</label>
-                            <input type="file" placeholder='Chọn hình ảnh cho sản phẩm' className='form-control'{...register("image")} />
+                            <input
+                                type="file"
+                                placeholder='Chọn hình ảnh cho sản phẩm'
+                                className='form-control'
+                                {...register("image")}
+                                onChange={onChangeFile}
+                            />
+                            <div>
+
+                                {errors.image && errors.image.message}
+                            </div>
                         </div>
 
                         <div className='row row-cols-2'>
@@ -67,7 +99,7 @@ const UpdateProduct = () => {
                             </div>
                             <div>
                                 <label htmlFor="name" className='form-lable'>Gía khuyến mại</label>
-                                <input type="number" min={0} placeholder='Nhập giá khuyến mại sản phẩm' className='form-control' {...register("price")} />
+                                <input type="number" placeholder='Nhập giá khuyến mại sản phẩm' className='form-control' {...register("price")} />
                             </div>
                         </div>
                         <div className='row row-cols-2'>
@@ -76,12 +108,10 @@ const UpdateProduct = () => {
                                 <select
                                     className='form-select'
                                     {...register('categoryId')}
-                                    value={selectCate}
-                                    onChange={(e) => setSelectCate(e.target.value)}
                                 >
                                     {categories.map((item, index) => {
                                         return (
-                                            <option key={index} value={item}>{item.name}</option>
+                                            <option key={index} value={item._id}>{item.name}</option>
                                         );
                                     })}
                                 </select>
