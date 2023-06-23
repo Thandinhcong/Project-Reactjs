@@ -5,11 +5,13 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { ListCates } from '../../../instances/categorys'
 import { schmeAddProduct } from '../../../pages/schemas/products'
-import { addProduct } from '../../../instances/products'
+import { UploadImage, addProduct } from '../../../instances/products'
+import { useNavigate } from 'react-router-dom'
 
 const AddProduct = () => {
+    const navigate = useNavigate('/');
     const [categorys, setCategorys] = useState([]);
-    const [sizes, setSizes] = useState([]);
+    const [image, setImage] = useState(null);
     const ListAllCate = async () => {
         const { data } = await ListCates();
         setCategorys(data.categorys)
@@ -21,23 +23,39 @@ const AddProduct = () => {
         resolver: yupResolver(schmeAddProduct)
     })
     const onHandleSubmit = async (product) => {
+        if (typeof image !== "string") return;
+        product.image = image;
         try {
             const newProduct = {
                 ...product,
-                size: sizes.map((size) => size.trim())
+                sizes: product.sizes.split(','),
             }
-            const { response } = await addProduct(newProduct);
-            console.log(response);
+            const response = await addProduct(newProduct);
+            console.log({ response });
+            alert("Thêm sản phẩm thành công");
+            navigate('/admin');
         } catch (error) {
             console.log(error);
+            alert("Có lỗi xảy ra khi thêm sản phẩm");
         }
     }
-    const handleSizesChange = (e) => {
-        const inputSizes = e.target.value;
-        // Tách chuỗi các size thành mảng và lưu vào state
-        const sizesArray = inputSizes.split(',').map((size) => size.trim());
-        setSizes(sizesArray);
+    const onChangeFile = async (e) => {
+        const files = e.target.files[0];
+        if (files) {
+            try {
+                const Res = await UploadImage({
+                    file: files,
+                    upload_preset: "demo-upload",
+                });
+                if (Res) {
+                    setImage(Res.data.url);
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        }
     };
+
     return (
         <div className='container-xxl'>
             <HeaderAdmin />
@@ -49,7 +67,7 @@ const AddProduct = () => {
                         <div className='row row-cols-2'>
                             <div>
                                 <label htmlFor="name" className='form-lable'>Tên sản phẩm</label>
-                                <input type="text" placeholder='Nhập tên sản phẩm' className='form-control'{...register('name')} />
+                                <input type="text" placeholder='Nhập tên sản phẩm' className='form-control' {...register('name')} />
                                 <div className='text-danger'>{errors.name && errors.name.message}</div>
                             </div>
                             <div>
@@ -65,7 +83,7 @@ const AddProduct = () => {
                                 placeholder='Chọn hình ảnh cho sản phẩm'
                                 className='form-control'
                                 {...register("image")}
-                            />
+                                onChange={onChangeFile} />
                             <div className='text-danger'>{errors.image && errors.image.message}</div>
                         </div>
 
@@ -93,7 +111,7 @@ const AddProduct = () => {
                         <div className='row row-cols-2'>
                             <div>
                                 <label htmlFor="">Danh mục</label>
-                                <select className='form-select'{...register('categoryId')} >
+                                <select className='form-select' {...register('categoryId')} >
                                     <option value="">Vui lòng chọn</option>
                                     {categorys.map((item) => {
                                         return (
@@ -107,14 +125,15 @@ const AddProduct = () => {
                                 <label htmlFor="">Kích cỡ</label>
                                 <input
                                     type="text"
-                                    {...register("size")}
+                                    {...register("sizes")}
                                     className='form-control'
-                                    value={sizes.join(', ')}
-                                    onChange={handleSizesChange}
+                                // value={sizes.join(', ')}
+                                // onChange={handleSizesChange}
                                 />
-                                <div>{errors.size && errors.size.message}</div>
+                                <div className='text-danger'>
+                                    {errors.sizes && errors.sizes.message}
+                                </div>
                             </div>
-
                         </div>
                         <div className='row row-cols-2'>
                             <div>
@@ -147,4 +166,4 @@ const AddProduct = () => {
     )
 }
 
-export default AddProduct
+export default AddProduct;

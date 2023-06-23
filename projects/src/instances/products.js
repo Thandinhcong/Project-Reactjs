@@ -37,3 +37,16 @@ export const VND = new Intl.NumberFormat('vi-VN', {
     style: "currency",
     currency: "VND"
 })
+export const UploadImage = (data) => {
+    const name = "dxzlnojyv";
+    return instance.post(
+        `https://api.cloudinary.com/v1_1/${name}/image/upload`,
+        data,
+        {
+            headers: {
+                "Content-Type": "multipart/form-data",
+                Accept: "application/json",
+            },
+        }
+    );
+}
