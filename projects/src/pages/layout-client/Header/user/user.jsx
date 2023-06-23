@@ -39,6 +39,8 @@ const User = () => {
     }, []);
 
     const handleLogout = () => {
+        alert("Đăng xuất thành công");
+        navigate("/")
         localStorage.removeItem('accessToken');
         localStorage.removeItem('user');
         setIsLogin(null);
