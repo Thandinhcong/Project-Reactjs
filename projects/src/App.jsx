@@ -13,6 +13,7 @@ import Statistical from "./components/admin/statistical/Statistical"
 import Favorite from "./pages/layout-client/productslove/productLove"
 import LayoutAdminCheck from "./pages/layout-admin/layoutAdmin"
 import AddCateries from "./components/admin/categories/AddCateries"
+import InfoUser from "./components/client/users/infoUser"
 
 function App() {
   return (
@@ -27,6 +28,8 @@ function App() {
           <Route path="lien-he" element={<Contacts />} />
           <Route path="chi-tiet-san-pham/:id" element={<DeltailPage />} />
           <Route path="san-pham-yeu-thich" element={<Favorite />} />
+          <Route path="thong-tin-nguoi-dung" element={<InfoUser />} />
+
         </Route>
         <Route path="admin" element={<LayoutAdminCheck />}>
           <Route index element={<LayoutAdmin />} />

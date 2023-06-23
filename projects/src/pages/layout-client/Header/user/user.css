@@ -104,3 +104,49 @@
 .user-icon:hover::after {
     display: block;
 }
+
+.user-icon-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.user-menu {
+    width: 200px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 999;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 8px;
+    display: none;
+    font-size: 15px;
+}
+
+.user-icon-wrapper:hover .user-menu {
+    display: block;
+}
+
+.user-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.user-menu li {
+    margin-bottom: 8px;
+}
+
+.user-menu a {
+    text-decoration: none;
+    color: #333;
+}
+
+.user-menu button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    color: #333;
+}
