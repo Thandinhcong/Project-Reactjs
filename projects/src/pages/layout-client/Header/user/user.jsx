@@ -36,15 +36,15 @@ const User = () => {
 
     return (
         <div className='signinn' >
-            <div className='item-signin'>
-                <Link to='/signin' className='text-dark'>
+            <div className='item-signin ms-5'>
+                <Link to='/signin' className='user-icon text-dark'>
                     <FontAwesomeIcon icon={faUser} className='me-4' />
                 </Link>
-                <Link to='' className='text-dark me-4'>
+                <Link to='' className='cart text-dark me-4'>
                     <FontAwesomeIcon icon={faCartShopping} />
                 </Link>
-                <Link to='/san-pham-yeu-thich' className='text-decoration-none text-dark'>
-                    <span className="material-symbols-outlined mt-1">favorite</span>
+                <Link to='/san-pham-yeu-thich' className='favoriteicon text-decoration-none text-dark'>
+                    <span className="material-symbols-outlined mt-1 me-3">favorite</span>
                 </Link>
                 <div className='search'>
                     <input

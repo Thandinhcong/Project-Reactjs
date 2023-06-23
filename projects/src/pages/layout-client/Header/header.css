@@ -64,11 +64,12 @@
     }
 
     .mobile {
-        position: absolute;
+        position: fixed;
         width: 100%;
         background-color: #fcede5;
         display: block;
-        z-index: 999;
+        z-index: 2;
+        top: 0;
     }
 }
 

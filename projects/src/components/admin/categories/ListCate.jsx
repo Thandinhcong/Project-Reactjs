@@ -1,44 +1,50 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, Outlet } from 'react-router-dom'
+import { ListCates } from '../../../instances/categorys';
 
 const ListCate = () => {
+    const [categorys, setCategorys] = useState([]);
+    const ListAllCate = async () => {
+        const { data } = await ListCates();
+
+        setCategorys(data.categorys)
+    }
+    useEffect(() => {
+        ListAllCate()
+    }, [])
     return (
         <div className='col-9 border ' >
             <h3 className='text-center'>Danh sách loại hàng</h3>
             <div className='d-flex justify-content-between'>
-                <Link to="/admin/them-san-pham" className='btn btn-outline-primary mb-2'>Thêm mới</Link>
+                <Link to="/admin/them-loai-hang" className='btn btn-outline-primary mb-2'>Thêm mới</Link>
             </div>
-            <div classNames="table table-responsive-xxl mt-3">
+            <div className="table table-responsive-xxl mt-3">
                 <table className="table table-bordered table-striped">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Tên sản phẩm</th>
+                            <th scope="col">Tên danh mục</th>
                             <th>Hình ảnh</th>
-                            <th scope="col">Giá khuyến mại</th>
-                            <th>Giá gốc</th>
-                            <th>Loại áo</th>
-                            <th>Mô tả</th>
-                            <th>Mô tả dài</th>
+                            <th>Số lượng</th>
                             <th>Thao tác</th>
 
                         </tr>
                     </thead>
                     <tbody>
-                        <tr >
-                            <td >1</td>
-                            <td>R1C2</td>
-                            <td><img src="https://shopdunk.com/images/thumbs/0008045_gold_550.webp" width={50} /></td>
-                            <td >Item</td>
-                            <td>Item</td>
-                            <td>Item</td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <Link to="/admin/cap-nhat-san-pham" className='btn btn-primary me-2'>Cập nhật</Link>
-                                <button className='btn btn-primary'>Xóa</button>
-                            </td>
-                        </tr>
+                        {categorys.map((item, index) => {
+                            return (
+                                <tr key={item._id} >
+                                    <td >{index + 1}</td>
+                                    <td>{item.name}</td>
+                                    <td><img src={item.image} alt="" width={50} /></td>
+                                    <td>{item.products.length}</td>
+                                    <td>
+                                        <Link to="/admin/cap-nhat-san-pham" className='btn btn-primary me-2'>Cập nhật</Link>
+                                        <button className='btn btn-primary'>Xóa</button>
+                                    </td>
+                                </tr>
+                            )
+                        })}
                     </tbody>
                 </table>
             </div>

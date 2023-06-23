@@ -31,9 +31,11 @@ const Signin = () => {
             if (user.role === "admin") {
                 navigate('/admin');
                 alert("Đăng nhập admin thành công")
+                return;
             } else {
                 navigate('/');
-                alert("Đăng nhập thành công")
+                alert("Đăng nhập thành công");
+                return;
             }
             console.log(data);
         } catch (error) {

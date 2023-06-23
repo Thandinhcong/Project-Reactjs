@@ -1,36 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import "./main.css";
+import { ListCates } from '../../../instances/categorys';
+import { Outlet } from 'react-router-dom';
 const Brand = () => {
+    const [categorys, setCategorys] = useState([])
+    const listCategoryAll = async () => {
+        const { data } = await ListCates()
+        setCategorys(data.categorys)
+        console.log(data);
+    }
+    useEffect(() => {
+        listCategoryAll();
+    }, [])
     return (
         <div className='container'>
             <h3 className='text-center mt-5'>DANH MỤC NỔI BẬT</h3>
             <div className='products'>
-                <div className='brand-item'>
-                    <img src="../aothun.jpg" alt="" />
-                    <p>Áo khoác</p>
-                    <span>8 sản phẩm</span>
-                </div>
-                <div className='brand-item'>
-                    <img src="../aothun.jpg" alt="" />
-                    <p>Áo khoác</p>
-                    <span>8 sản phẩm</span>
-                </div>
-                <div className='brand-item'>
-                    <img src="../aothun.jpg" alt="" />
-                    <p>Áo sơ mi</p>
-                    <span>8 sản phẩm</span>
-                </div>
-                <div className='brand-item'>
-                    <img src="../aothun.jpg" alt="" />
-                    <p>Áo khoác</p>
-                    <span>8 sản phẩm</span>
-                </div>
-                <div className='brand-item'>
-                    <img src="../aothun.jpg" alt="" />
-                    <p>Áo khoác</p>
-                    <span>8 sản phẩm</span>
-                </div>
+                {categorys.map((item) => {
+                    return <div className='brand-item'>
+                        <img src={item.image} alt="category" />
+                        <p>{item.name}</p>
+                        <span>Số lượng: {item.products.length}</span>
+                    </div>
+
+                })}
             </div>
+            <Outlet />
         </div>
     )
 }

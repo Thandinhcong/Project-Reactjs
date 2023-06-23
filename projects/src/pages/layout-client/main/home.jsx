@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Footer from '../footer/Footer'
 import Header from '../Header/Header'
 import Logistics from './Logistics'
@@ -9,6 +9,9 @@ import Product from './products/Product'
 import Scroll from './scrolls/scrolls'
 import Notification from './Notification/Notification'
 const HomePage = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    })
     return (
         <div>
             <Header />

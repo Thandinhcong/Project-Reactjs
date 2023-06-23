@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getAllProduct } from '../../../instances/products';
-
+import { deleteProduct, getAllProduct } from '../../../instances/products';
 const ListProduct = () => {
     const [products, setProducts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1); // Trang hiện tại
@@ -11,7 +10,20 @@ const ListProduct = () => {
         const { data } = await getAllProduct();
         setProducts(data.products);
     };
-
+    const handleDeleteProduct = async (id) => {
+        try {
+            await deleteProduct(id)
+            const confilm = window.confirm("Bạn có muốn xóa không ?")
+            if (confilm) {
+                const updateProduct = products.filter((item) => item._id !== id)
+                setProducts(updateProduct);
+                await products.deleteOne
+                alert("Xóa thành công")
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentItems = products.slice(indexOfFirstItem, indexOfLastItem);
@@ -39,8 +51,8 @@ const ListProduct = () => {
                     Thêm sản phẩm
                 </Link>
             </div>
-            <div className='mt-3'>
-                <table className='table table-bordered'>
+            <div className='mt-3 table-responsive overflow-x-auto w-100'>
+                <table className='table table-bordered ' >
                     <thead >
                         <tr>
                             <th>#</th>
@@ -60,15 +72,15 @@ const ListProduct = () => {
                             <tr key={item._id}>
                                 <td>{index + 1}</td>
                                 <td>{item.name}</td>
-                                <td><img src={item.image} width={50} /></td>
+                                <td><img src={item.image} width={100} /></td>
                                 <td>{item.price}</td>
                                 <td>{item.original_price}</td>
                                 <td>{item.quantity}</td>
-                                <td >{item.description}</td>
-                                <td className=''>{item.salient_features}</td>
-                                <td>
-                                    <Link to="/admin/cap-nhat-san-pham" className=' me-2'><img width="15" height="15" src="https://img.icons8.com/ios/50/edit--v1.png" alt="edit--v1" /></Link>
-                                    <button className='border-0 bg-white'><span className="material-symbols-outlined">delete</span></button>
+                                <td style={{ width: "30%" }}>{item.description}</td>
+                                <td style={{ width: "30%" }}>{item.salient_features}</td>
+                                <td style={{ width: "10%" }} className='d-flex'>
+                                    <Link to={`/admin/cap-nhat-san-pham/${item._id}`} className=' me-2'><img width="15" height="15" src="https://img.icons8.com/ios/50/edit--v1.png" alt="edit--v1" /></Link>
+                                    <button onClick={() => handleDeleteProduct(item._id)} className='border-0 bg-white'><span className="material-symbols-outlined">delete</span></button>
                                 </td>
                             </tr>
                         ))}
