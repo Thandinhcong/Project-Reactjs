@@ -109,7 +109,7 @@ const AddProduct = () => {
                         </div>
                         <div className='row row-cols-2'>
                             <div>
-                                <label htmlFor="">Danh mục</label>
+                                <label >Danh mục</label>
                                 <select className='form-select' {...register('categoryId')} >
                                     <option value="">Vui lòng chọn</option>
                                     {categorys.map((item) => {

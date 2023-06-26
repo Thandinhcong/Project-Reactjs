@@ -8,3 +8,7 @@ export const FormSignin = (data) => {
     const uri = "/signin"
     return instance.post(uri, data)
 }
+export const ListUsers = () => {
+    const uri = "/users"
+    return instance.get(uri)
+}

@@ -6,7 +6,6 @@ const ListCate = () => {
     const [categorys, setCategorys] = useState([]);
     const ListAllCate = async () => {
         const { data } = await ListCates();
-
         setCategorys(data.categorys)
     }
     useEffect(() => {

@@ -39,11 +39,14 @@ const User = () => {
     }, []);
 
     const handleLogout = () => {
-        alert("Đăng xuất thành công");
-        navigate("/")
-        localStorage.removeItem('accessToken');
-        localStorage.removeItem('user');
-        setIsLogin(null);
+        const confilm = window.confirm("Bạn có muốn đăng xuất không ?");
+        if (confilm) {
+            alert("Đăng xuất thành công");
+            navigate("/")
+            localStorage.removeItem('accessToken');
+            localStorage.removeItem('user');
+            setIsLogin(null);
+        }
     };
 
     return (
