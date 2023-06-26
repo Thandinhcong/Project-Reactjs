@@ -1,12 +1,26 @@
 import React, { useEffect, useState } from 'react'
 import { Link, Outlet } from 'react-router-dom'
-import { ListCates } from '../../../instances/categorys';
+import { ListCates, deletetCate } from '../../../instances/categorys';
 
 const ListCate = () => {
     const [categorys, setCategorys] = useState([]);
     const ListAllCate = async () => {
         const { data } = await ListCates();
         setCategorys(data.categorys)
+    }
+    const handleDeleteCategories = async (id) => {
+        try {
+            await deletetCate(id);
+            const confilm = window.confirm("Bạn có muốn xóa không?");
+            if (confilm) {
+                const response = categorys.filter((item) => item._id !== id);
+                setCategorys(response);
+                alert("xóa thành công")
+                console.log({ response });
+            }
+        } catch (error) {
+            console.log(error);
+        }
     }
     useEffect(() => {
         ListAllCate()
@@ -39,7 +53,7 @@ const ListCate = () => {
                                     <td>{item.products.length}</td>
                                     <td>
                                         <Link to="/admin/cap-nhat-san-pham" className='btn btn-primary me-2'>Cập nhật</Link>
-                                        <button className='btn btn-primary'>Xóa</button>
+                                        <button onClick={() => handleDeleteCategories(item._id)} className='btn btn-primary'>Xóa</button>
                                     </td>
                                 </tr>
                             )
