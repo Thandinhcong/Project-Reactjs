@@ -3,3 +3,7 @@ export const schemaAddCate = yup.object().shape({
     name: yup.string().required("Trường dữ liệu bắt buộc"),
     image: yup.string()
 })
+export const schemaUpdateCate = yup.object().shape({
+    name: yup.string().required("Trường dữ liệu bắt buộc"),
+    image: yup.string()
+})

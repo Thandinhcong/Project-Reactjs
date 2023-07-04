@@ -15,6 +15,7 @@ import LayoutAdminCheck from "./pages/layout-admin/layoutAdmin"
 import AddCateries from "./components/admin/categories/AddCateries"
 import InfoUser from "./components/client/users/infoUser"
 import ListMember from "./components/admin/member/listMember"
+import UpdateCate from "./components/admin/categories/UpdateCate"
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
           <Route path="chi-tiet-san-pham" element={<DeltailPage />} />
           <Route path="loai-hang" element={<ListCategorys />} />
           <Route path="them-loai-hang" element={<AddCateries />} />
+          <Route path="cap-nhat-loai-hang/:id" element={<UpdateCate />} />
           <Route path="tai-khoan" element={<ListMember />} />
           <Route path="thong-ke" element={<Statistical />} />
         </Route>

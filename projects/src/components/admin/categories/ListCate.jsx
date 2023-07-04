@@ -52,7 +52,7 @@ const ListCate = () => {
                                     <td><img src={item.image} alt="" width={50} /></td>
                                     <td>{item.products.length}</td>
                                     <td>
-                                        <Link to="/admin/cap-nhat-san-pham" className='btn btn-primary me-2'>Cập nhật</Link>
+                                        <Link to={`/admin/cap-nhat-loai-hang/${item._id}`} className='btn btn-primary me-2'>Cập nhật</Link>
                                         <button onClick={() => handleDeleteCategories(item._id)} className='btn btn-primary'>Xóa</button>
                                     </td>
                                 </tr>
