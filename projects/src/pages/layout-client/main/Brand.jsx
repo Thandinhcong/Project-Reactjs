@@ -7,7 +7,6 @@ const Brand = () => {
     const listCategoryAll = async () => {
         const { data } = await ListCates()
         setCategorys(data.categorys)
-        console.log(data);
     }
     useEffect(() => {
         listCategoryAll();

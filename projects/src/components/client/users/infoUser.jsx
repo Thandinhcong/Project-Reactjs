@@ -10,8 +10,23 @@ const InfoUser = () => {
     })
 
     useEffect(() => {
-        window.scrollTo(0, 0)
-    })
+        window.scrollTo(0, 0);
+        const checkTokenExpriration = () => {
+            const token = localStorage.getItem("accessToken");
+            if (token) {
+                const exprirationTime = localStorage.getItem("expirationTime");
+                if (Date.now() > exprirationTime) {
+                    localStorage.removeItem("accessToken");
+                    localStorage.removeItem('expirationTime');
+                    window.location.href = "/signin"
+                }
+            }
+        }
+        const interval = setInterval(checkTokenExpriration, 5000);
+        return () => {
+            clearInterval(interval);
+        }
+    }, [])
     return (
         <div>
             <Header />
