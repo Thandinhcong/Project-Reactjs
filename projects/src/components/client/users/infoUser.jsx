@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import Header from '../../../pages/layout-client/Header/Header'
 import Footer from '../../../pages/layout-client/footer/Footer'
+import { Link } from 'react-router-dom'
 
 const InfoUser = () => {
     const [users, setUsers] = useState(() => {
         const user = localStorage.getItem('user');
         return user ? JSON.parse(user) : null
     })
+
     useEffect(() => {
         window.scrollTo(0, 0)
     })
@@ -31,12 +33,12 @@ const InfoUser = () => {
                         <tbody>
                             <tr>
                                 <td>{users.name}</td>
-                                <td></td>
+                                <td>{users.numberPhone}</td>
                                 <td>{users.email}</td>
-                                <td>Item</td>
-                                <td>Item</td>
-                                <td>Item</td>
-                                <th><a href="" className='btn btn-primary'>Cập nhật</a></th>
+                                <td>{users.address}</td>
+                                <td>{users.gender}</td>
+                                <td>{users.date}</td>
+                                <th><Link to={`/cap-nhat-thong-tin-nguoi-dung/${users._id}`} className='btn btn-primary'>Cập nhật</Link></th>
                             </tr>
                         </tbody>
                     </table>

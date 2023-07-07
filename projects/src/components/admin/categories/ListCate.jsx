@@ -40,7 +40,6 @@ const ListCate = () => {
                             <th>Hình ảnh</th>
                             <th>Số lượng</th>
                             <th>Thao tác</th>
-
                         </tr>
                     </thead>
                     <tbody>

@@ -59,11 +59,11 @@ const User = () => {
                             <div className="user-menu">
                                 <ul>
                                     <li className='d-flex gap-1'>
-                                        <span class="material-symbols-outlined">manage_accounts</span>
+                                        <span className="material-symbols-outlined">manage_accounts</span>
                                         <Link to="/thong-tin-nguoi-dung">Thông tin </Link>
                                     </li>
                                     <li className='d-flex gap-1'>
-                                        <span class="material-symbols-outlined">logout</span>
+                                        <span className="material-symbols-outlined">logout</span>
                                         <button onClick={handleLogout}>Đăng xuất</button>
                                     </li>
                                 </ul>

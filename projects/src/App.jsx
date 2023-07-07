@@ -16,6 +16,7 @@ import AddCateries from "./components/admin/categories/AddCateries"
 import InfoUser from "./components/client/users/infoUser"
 import ListMember from "./components/admin/member/listMember"
 import UpdateCate from "./components/admin/categories/UpdateCate"
+import UpdateInfoUser from "./components/client/users/Update/updateUser"
 
 function App() {
   return (
@@ -31,7 +32,7 @@ function App() {
           <Route path="chi-tiet-san-pham/:id" element={<DeltailPage />} />
           <Route path="san-pham-yeu-thich" element={<Favorite />} />
           <Route path="thong-tin-nguoi-dung" element={<InfoUser />} />
-
+          <Route path="cap-nhat-thong-tin-nguoi-dung/:id" element={<UpdateInfoUser />} />
         </Route>
         <Route path="admin" element={<LayoutAdminCheck />}>
           <Route index element={<LayoutAdmin />} />
