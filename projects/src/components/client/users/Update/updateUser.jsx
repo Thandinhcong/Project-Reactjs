@@ -6,7 +6,8 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { ListOneUser, updateUser } from '../../../../instances/accounts';
 import { schemaUser } from '../../../../pages/schemas/account';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const UpdateInfoUser = () => {
     const { id } = useParams();
     const navigate = useNavigate();
@@ -19,8 +20,12 @@ const UpdateInfoUser = () => {
     const onHandleSubmit = async (user) => {
         try {
             const response = await updateUser(id, user)
-            alert("Cập nhật thành công")
-            navigate("/thong-tin-nguoi-dung")
+            toast.success('Cập nhật thành công!', {
+                position: toast.POSITION.TOP_RIGHT,
+            });
+            setTimeout(() => {
+                navigate("/thong-tin-nguoi-dung")
+            }, 2000)
             console.log(response);
         } catch (error) {
             console.log(error);
@@ -81,7 +86,10 @@ const UpdateInfoUser = () => {
 
                 </div>
                 <div className='text-center'>
-                    <button className='btn btn-primary mt-3 '>Cập nhật</button>
+                    <button className='btn btn-primary mt-3 '>
+                        <ToastContainer />
+                        Cập nhật
+                    </button>
                 </div>
             </form>
             <Footer />
