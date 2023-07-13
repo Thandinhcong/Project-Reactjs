@@ -7,7 +7,6 @@ const Brand = () => {
     const listCategoryAll = async () => {
         const { data } = await ListCates()
         setCategorys(data.categorys)
-        console.log(data);
     }
     useEffect(() => {
         listCategoryAll();
@@ -17,7 +16,7 @@ const Brand = () => {
             <h3 className='text-center mt-5'>DANH MỤC NỔI BẬT</h3>
             <div className='products'>
                 {categorys.map((item) => {
-                    return <div className='brand-item'>
+                    return <div className='brand-item' key={item._id}>
                         <img src={item.image} alt="category" />
                         <p>{item.name}</p>
                         <span>Số lượng: {item.products.length}</span>

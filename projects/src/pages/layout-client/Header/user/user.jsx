@@ -9,6 +9,10 @@ const User = () => {
     const [products, setProducts] = useState([]);
     const [searchKeyword, setSearchKeyword] = useState('');
     const [searchResults, setSearchResults] = useState([]);
+    const [isLogin, setIsLogin] = useState(() => {
+        const user = localStorage.getItem('user');
+        return user ? JSON.parse(user) : null;
+    })
     const navigate = useNavigate();
     const ListProduct = async () => {
         try {
@@ -34,13 +38,44 @@ const User = () => {
         ListProduct();
     }, []);
 
+    const handleLogout = () => {
+        const confilm = window.confirm("Bạn có muốn đăng xuất không ?");
+        if (confilm) {
+            alert("Đăng xuất thành công");
+            navigate("/")
+            localStorage.removeItem('accessToken');
+            localStorage.removeItem('user');
+            setIsLogin(null);
+        }
+    };
+
     return (
         <div className='signinn' >
             <div className='item-signin ms-5'>
-                <Link to='/signin' className='user-icon text-dark'>
-                    <FontAwesomeIcon icon={faUser} className='me-4' />
-                </Link>
-                <Link to='' className='cart text-dark me-4'>
+                {isLogin ? (
+                    <div>
+                        <div className="user-icon-wrapper">
+                            <FontAwesomeIcon icon={faUser} className='me-4' />
+                            <div className="user-menu">
+                                <ul>
+                                    <li className='d-flex gap-1'>
+                                        <span className="material-symbols-outlined">manage_accounts</span>
+                                        <Link to="/thong-tin-nguoi-dung">Thông tin </Link>
+                                    </li>
+                                    <li className='d-flex gap-1'>
+                                        <span className="material-symbols-outlined">logout</span>
+                                        <button onClick={handleLogout}>Đăng xuất</button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                ) : (
+                    <Link to='/signin' className='user-icon text-dark'>
+                        <FontAwesomeIcon icon={faUser} className='me-4' />
+                    </Link>
+                )}
+                <Link to='/' className='cart text-dark me-4'>
                     <FontAwesomeIcon icon={faCartShopping} />
                 </Link>
                 <Link to='/san-pham-yeu-thich' className='favoriteicon text-decoration-none text-dark'>
@@ -48,7 +83,6 @@ const User = () => {
                 </Link>
                 <div className='search'>
                     <input
-
                         type='text'
                         className='border'
                         placeholder='Tìm kiếm sản phẩm'
@@ -69,10 +103,10 @@ const User = () => {
                                 className='search-result-item'
                             >
                                 <Link
-                                    to={`/chi-tiet-san-pham/${product._id}`
-                                    } className='text-decoration-none'>
+                                    to={`/chi-tiet-san-pham/${product._id}`}
+                                    className='text-decoration-none'
+                                >
                                     <p>{product.name}</p>
-
                                 </Link>
                             </div>
                         ))}

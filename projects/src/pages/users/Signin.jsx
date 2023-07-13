@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import { Link, Outlet, useNavigate } from 'react-router-dom';
-import "./signin.css";
 import Clothes from '../layout-client/Header/menu/Clothes';
 import Logo from '../layout-client/Header/menu/Logo';
 import User from '../layout-client/Header/user/user';
@@ -15,12 +14,16 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { schemaSignin } from '../schemas/products';
 import { FormSignin } from '../../instances/accounts';
 import Header from '../layout-client/Header/Header';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import "./signin.css";
 const Signin = () => {
     const navigate = useNavigate();
     const [user, SetUser] = useLocalStorage('user', null)
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(schemaSignin)
     })
+
     const OnHandleSubmit = async (users) => {
         try {
             const { data: { accessToken, user } } = await FormSignin(users)
@@ -29,17 +32,26 @@ const Signin = () => {
                 ...user
             })
             if (user.role === "admin") {
-                navigate('/admin');
-                alert("Đăng nhập admin thành công")
+                toast.success('Đăng nhập admin thành công!', {
+                    position: toast.POSITION.TOP_RIGHT,
+                });
+                setTimeout(() => {
+                    navigate('/admin');
+                }, 2000)
                 return;
             } else {
-                navigate('/');
-                alert("Đăng nhập thành công");
+                toast.success('Đăng nhập thành công!', {
+                    position: toast.POSITION.BOTTOM_RIGHT,
+                });
+                setTimeout(() => {
+                    navigate('/');
+                }, 2000)
                 return;
             }
-            console.log(data);
         } catch (error) {
-            alert("Thông tin tài khoản hoặc mật khẩu không chính sác")
+            toast.error('Thông tin tài khoản hoặc mật khẩu không chính sác!', {
+                position: toast.POSITION.TOP_RIGHT,
+            });
         }
     }
     useEffect(() => {
@@ -92,6 +104,7 @@ const Signin = () => {
                             <div className='text-danger'>{errors.password && errors.password.message}</div>
                         </div>
                         <button title="Sign In" type="submit" className="sign-in_btn">
+                            <ToastContainer />
                             <span>ĐĂNG NHẬP</span>
                         </button>
                         <div className="separator">
@@ -132,6 +145,7 @@ const Signin = () => {
                             <span>Đăng nhập với Google</span>
                         </button>
                         <button title="Sign In" type="submit" className="sign-in_apl">
+
                             <svg
                                 preserveAspectRatio="xMidYMid"
                                 version="1.1"

@@ -13,13 +13,17 @@ import Statistical from "./components/admin/statistical/Statistical"
 import Favorite from "./pages/layout-client/productslove/productLove"
 import LayoutAdminCheck from "./pages/layout-admin/layoutAdmin"
 import AddCateries from "./components/admin/categories/AddCateries"
+import InfoUser from "./components/client/users/infoUser"
+import ListMember from "./components/admin/member/listMember"
+import UpdateCate from "./components/admin/categories/UpdateCate"
+import UpdateInfoUser from "./components/client/users/Update/updateUser"
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
 
-        {/* client */}
+        {/* customer */}
         <Route path="/" element={<Outlet />}>
           <Route index element={<HomePage />} />
           <Route path="signin" element={<Signin />} />
@@ -27,7 +31,10 @@ function App() {
           <Route path="lien-he" element={<Contacts />} />
           <Route path="chi-tiet-san-pham/:id" element={<DeltailPage />} />
           <Route path="san-pham-yeu-thich" element={<Favorite />} />
+          <Route path="thong-tin-nguoi-dung" element={<InfoUser />} />
+          <Route path="cap-nhat-thong-tin-nguoi-dung/:id" element={<UpdateInfoUser />} />
         </Route>
+        {/* admin */}
         <Route path="admin" element={<LayoutAdminCheck />}>
           <Route index element={<LayoutAdmin />} />
           <Route path="cap-nhat-san-pham/:id" element={< UpdateProduct />} />
@@ -35,6 +42,8 @@ function App() {
           <Route path="chi-tiet-san-pham" element={<DeltailPage />} />
           <Route path="loai-hang" element={<ListCategorys />} />
           <Route path="them-loai-hang" element={<AddCateries />} />
+          <Route path="cap-nhat-loai-hang/:id" element={<UpdateCate />} />
+          <Route path="tai-khoan" element={<ListMember />} />
           <Route path="thong-ke" element={<Statistical />} />
         </Route>
         <Route path="*" element={<NotFound />} />

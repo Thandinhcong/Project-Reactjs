@@ -9,26 +9,32 @@ export const ListOneCate = (id) => {
     return instance.get(uri)
 }
 export const addCate = (cate) => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    const token = user.accessToken;
     const uri = "/categorys/"
-    return instance.post(uri, cate)
+    return instance.post(uri, cate, {
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        }
+    })
 }
 export const deletetCate = (id) => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    const token = user.accessToken;
     const uri = "/categorys/" + id
-    return instance.get(uri)
+    return instance.delete(uri, {
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        }
+    })
 }
 export const updateCate = (id, cate) => {
     const uri = "/categorys/" + id
     return instance.put(uri, cate)
 }
-// Hàm để lấy danh sách sản phẩm trong danh mục
-export const getCategoryProducts = async (categoryID) => {
-    try {
-        const response = await instance.get(`/categorys/${categoryID}/products`);
-        return response;
-    } catch (error) {
-        throw new Error('Failed to fetch category products');
-    }
-};
+
 
 
 

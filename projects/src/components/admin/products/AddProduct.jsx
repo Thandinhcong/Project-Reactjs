@@ -7,9 +7,10 @@ import { ListCates } from '../../../instances/categorys'
 import { schmeAddProduct } from '../../../pages/schemas/products'
 import { UploadImage, addProduct } from '../../../instances/products'
 import { useNavigate } from 'react-router-dom'
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const AddProduct = () => {
-    const navigate = useNavigate('/');
+    const navigate = useNavigate();
     const [categorys, setCategorys] = useState([]);
     const [image, setImage] = useState(null);
     const ListAllCate = async () => {
@@ -30,10 +31,13 @@ const AddProduct = () => {
                 ...product,
                 sizes: product.sizes.split(','),
             }
-            const response = await addProduct(newProduct);
-            console.log({ response });
-            alert("Thêm sản phẩm thành công");
-            navigate('/admin');
+            await addProduct(newProduct);
+            toast.success('Thêm sản phẩm thành công!', {
+                position: toast.POSITION.TOP_RIGHT,
+            });
+            setTimeout(() => {
+                navigate('/admin');
+            }, 2000)
         } catch (error) {
             alert("Có lỗi xảy ra khi thêm sản phẩm");
         }
@@ -109,7 +113,7 @@ const AddProduct = () => {
                         </div>
                         <div className='row row-cols-2'>
                             <div>
-                                <label htmlFor="">Danh mục</label>
+                                <label >Danh mục</label>
                                 <select className='form-select' {...register('categoryId')} >
                                     <option value="">Vui lòng chọn</option>
                                     {categorys.map((item) => {
@@ -155,7 +159,10 @@ const AddProduct = () => {
                                 <div className='text-danger'>{errors.salient_features && errors.salient_features.message}</div>
                             </div>
                         </div>
-                        <button className="btn btn-primary mt-3">Thêm sản phẩm</button>
+                        <button className="btn btn-primary mt-3">
+                            Thêm sản phẩm
+                            <ToastContainer />
+                        </button>
                     </form>
                 </section>
             </div>

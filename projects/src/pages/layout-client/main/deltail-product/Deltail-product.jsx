@@ -5,11 +5,24 @@ import "./deltail.css";
 import { useParams } from 'react-router-dom';
 import { getOneProduct, VND } from '../../../../instances/products';
 const DeltailPage = () => {
+    const [counts, setCount] = useState(1)
     const [product, setProducts] = useState({});
     const { id } = useParams();
     const fetchProduct = async () => {
         const { data } = await getOneProduct(id);
         setProducts(data.products)
+    }
+    const handleDecrease = () => {
+        if (counts > 1) {
+            setCount(counts - 1)
+        }
+    }
+    const handleIncrease = () => {
+        if (counts === 10) {
+            alert("Tối đa mua 10 sản phẩm");
+            return;
+        }
+        setCount(counts + 1)
     }
     useEffect(() => {
         fetchProduct();
@@ -19,7 +32,7 @@ const DeltailPage = () => {
         <div>
             <Header />
             <div className='deltail container p-3'>
-                <img src={product.image} alt="" />
+                <img src={product.image} alt={product.image} />
                 <div>
                     <div className='d-flex'>
                         <a href="/" className='text-decoration-none' >
@@ -44,9 +57,9 @@ const DeltailPage = () => {
                     <span>{product.description}</span>
                     <div className='d-flex mt-5 mb-5'>
                         <div className='count'>
-                            <button>-</button>
-                            <label htmlFor="">1</label>
-                            <button>+</button>
+                            <button onClick={handleDecrease} >-</button>
+                            <label htmlFor="">{counts}</label>
+                            <button onClick={handleIncrease}>+</button>
                         </div>
                         <button className='ms-5 btn btn-dark'>THÊM VÀO GIỎ</button>
                     </div>
