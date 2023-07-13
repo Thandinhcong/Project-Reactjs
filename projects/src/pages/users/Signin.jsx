@@ -41,7 +41,7 @@ const Signin = () => {
                 return;
             } else {
                 toast.success('Đăng nhập thành công!', {
-                    position: toast.POSITION.TOP_LEFT,
+                    position: toast.POSITION.BOTTOM_RIGHT,
                 });
                 setTimeout(() => {
                     navigate('/');

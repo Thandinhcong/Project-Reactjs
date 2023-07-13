@@ -23,7 +23,7 @@ function App() {
     <BrowserRouter>
       <Routes>
 
-        {/* client */}
+        {/* customer */}
         <Route path="/" element={<Outlet />}>
           <Route index element={<HomePage />} />
           <Route path="signin" element={<Signin />} />
@@ -34,6 +34,7 @@ function App() {
           <Route path="thong-tin-nguoi-dung" element={<InfoUser />} />
           <Route path="cap-nhat-thong-tin-nguoi-dung/:id" element={<UpdateInfoUser />} />
         </Route>
+        {/* admin */}
         <Route path="admin" element={<LayoutAdminCheck />}>
           <Route index element={<LayoutAdmin />} />
           <Route path="cap-nhat-san-pham/:id" element={< UpdateProduct />} />

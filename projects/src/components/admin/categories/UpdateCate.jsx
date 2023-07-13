@@ -6,7 +6,8 @@ import { schemaUpdateCate } from '../../../pages/schemas/categorys';
 import { ListOneCate, updateCate } from '../../../instances/categorys';
 import HeaderAdmin from '../../../pages/layout-admin/header/Header';
 import MenuLeft from '../../../pages/layout-admin/MenuLeft';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const UpdateCate = () => {
     const { id } = useParams();
     const { register, handleSubmit, formState: { errors } } = useForm({
@@ -15,12 +16,13 @@ const UpdateCate = () => {
             return await getById(id)
         }
     })
-
     const onHandleSubmit = async (product) => {
         try {
             const response = await updateCate(id, product);
             console.log({ response });
-
+            toast.success("Cập nhật danh mục thành công !", {
+                position: toast.POSITION.TOP_LEFT
+            })
         } catch (error) {
             console.log(error);
         }
@@ -61,11 +63,13 @@ const UpdateCate = () => {
                                 {...register("image")}
                             />
                             <div>
-
                                 {errors.image && errors.image.message}
                             </div>
                         </div>
-                        <button className="btn btn-primary mt-3">Cập nhật danh mục</button>
+                        <button className="btn btn-primary mt-3">
+                            Cập nhật danh mục
+                            <ToastContainer />
+                        </button>
                     </form>
                 </section>
             </div>

@@ -7,7 +7,8 @@ import { addCate } from '../../../instances/categorys'
 import { schemaAddCate } from '../../../pages/schemas/categorys'
 import { UploadImage } from '../../../instances/products'
 import { useNavigate } from 'react-router-dom'
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const AddCateries = () => {
     const [image, setImage] = useState(null);
     const navigate = useNavigate();
@@ -18,9 +19,14 @@ const AddCateries = () => {
         if (typeof image !== "string") return;
         cate.image = image;
         try {
-            const response = await addCate(cate);
+            await addCate(cate);
             alert("Thêm thành công");
-            navigate('/admin')
+            toast.success("Thêm thành công ", {
+                position: toast.POSITION.TOP_RIGHT
+            })
+            setTimeout(() => {
+                navigate('/admin')
+            }, 2000);
         } catch (error) {
             console.log(error);
         }
@@ -70,7 +76,10 @@ const AddCateries = () => {
                             />
                             <div className='text-danger'>{errors.image && errors.image.message}</div>
                         </div>
-                        <button className="btn btn-primary mt-3">Thêm </button>
+                        <button className="btn btn-primary mt-3">
+                            <ToastContainer />
+                            Thêm
+                        </button>
                     </form>
                 </section>
             </div>

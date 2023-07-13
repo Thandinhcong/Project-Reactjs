@@ -7,7 +7,8 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { UploadImage, getOneProduct, updateProduct } from '../../../instances/products'
 import { schemaUpdateProduct } from '../../../pages/schemas/products'
 import { ListCates } from '../../../instances/categorys'
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const UpdateProduct = () => {
     const { id } = useParams();
     const navigate = useNavigate();
@@ -24,9 +25,13 @@ const UpdateProduct = () => {
         if (typeof image !== "string") return
         products.image = image;
         try {
-            const response = await updateProduct(id, products)
-            alert("cập nhật thành công")
-            navigate('/admin')
+            const response = await updateProduct(id, products);
+            toast.success("Cập nhật thành công !", {
+                position: toast.POSITION.TOP_RIGHT
+            })
+            setTimeout(() => {
+                navigate('/admin')
+            }, 2000);
         } catch (error) {
             console.log(error);
             alert("Có lỗi xảy ra hãy thử lại")
@@ -115,7 +120,6 @@ const UpdateProduct = () => {
                                         );
                                     })}
                                 </select>
-
                             </div>
                             <div>
                                 <label htmlFor="">Kích cỡ</label>
@@ -132,7 +136,10 @@ const UpdateProduct = () => {
                                 <textarea className='form-control' placeholder='Nhập mô tả dài' cols="30" rows="5" {...register("salient_features")}></textarea>
                             </div>
                         </div>
-                        <button className="btn btn-primary mt-3">Cập nhật sản phẩm</button>
+                        <button className="btn btn-primary mt-3">
+                            Cập nhật sản phẩm
+                            <ToastContainer />
+                        </button>
                     </form>
                 </section>
             </div>
