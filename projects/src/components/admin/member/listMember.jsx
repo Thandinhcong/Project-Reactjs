@@ -28,7 +28,6 @@ const ListMember = () => {
                                 <tr>
                                     <th>#</th>
                                     <th>Tên</th>
-                                    <th>Mật khẩu</th>
                                     <th>Email</th>
                                     <th>Số điện thoại</th>
                                     <th>Ngày sinh</th>
@@ -43,7 +42,6 @@ const ListMember = () => {
                                         <tr key={item._id}>
                                             <td>{index + 1}</td>
                                             <td>{item.name}</td>
-                                            <td>{item.password}</td>
                                             <td>{item.email}</td>
                                             <td>{item.numberPhone}</td>
                                             <td>{item.date}</td>

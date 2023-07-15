@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Link, Outlet } from 'react-router-dom'
 import { ListCates, deletetCate } from '../../../instances/categorys';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const ListCate = () => {
     const [categorys, setCategorys] = useState([]);
     const ListAllCate = async () => {
@@ -15,8 +16,9 @@ const ListCate = () => {
             if (confilm) {
                 const response = categorys.filter((item) => item._id !== id);
                 setCategorys(response);
-                alert("xóa thành công")
-                console.log({ response });
+                toast.success("Xóa thành công !", {
+                    position: toast.POSITION.TOP_RIGHT
+                })
             }
         } catch (error) {
             console.log(error);
@@ -52,7 +54,13 @@ const ListCate = () => {
                                     <td>{item.products.length}</td>
                                     <td>
                                         <Link to={`/admin/cap-nhat-loai-hang/${item._id}`} className='btn btn-primary me-2'>Cập nhật</Link>
-                                        <button onClick={() => handleDeleteCategories(item._id)} className='btn btn-primary'>Xóa</button>
+                                        <button
+                                            onClick={() => handleDeleteCategories(item._id)}
+                                            className='btn btn-primary'
+                                        >
+                                            <ToastContainer />
+                                            Xóa
+                                        </button>
                                     </td>
                                 </tr>
                             )

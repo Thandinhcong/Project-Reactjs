@@ -31,8 +31,15 @@ export const deletetCate = (id) => {
     })
 }
 export const updateCate = (id, cate) => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    const token = user.accessToken;
     const uri = "/categorys/" + id
-    return instance.put(uri, cate)
+    return instance.put(uri, cate, {
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        }
+    })
 }
 
 

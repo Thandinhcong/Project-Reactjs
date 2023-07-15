@@ -1,7 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form';
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { schemaUpdateCate } from '../../../pages/schemas/categorys';
 import { ListOneCate, updateCate } from '../../../instances/categorys';
 import HeaderAdmin from '../../../pages/layout-admin/header/Header';
@@ -10,6 +10,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const UpdateCate = () => {
     const { id } = useParams();
+    const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(schemaUpdateCate),
         defaultValues: async () => {
@@ -21,8 +22,11 @@ const UpdateCate = () => {
             const response = await updateCate(id, product);
             console.log({ response });
             toast.success("Cập nhật danh mục thành công !", {
-                position: toast.POSITION.TOP_LEFT
+                position: toast.POSITION.TOP_RIGHT
             })
+            setTimeout(() => {
+                navigate("/admin/loai-hang")
+            }, 2000)
         } catch (error) {
             console.log(error);
         }
@@ -30,6 +34,7 @@ const UpdateCate = () => {
     const getById = async (id) => {
         try {
             const { data } = await ListOneCate(id);
+            console.log(data)
             return data;
         } catch (error) {
             console.log(error);
