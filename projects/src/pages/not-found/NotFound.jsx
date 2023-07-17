@@ -1,6 +1,11 @@
-import React from 'react'
+import React from 'react';
+import { useNavigate } from "react-router-dom"
 import "../css/global.css";
 const NotFound = () => {
+    const navigate = useNavigate();
+    const goback = () => {
+        navigate(-1)
+    }
     return (
         <>
             {/* Page Wrapper */}
@@ -22,10 +27,10 @@ const NotFound = () => {
                                     404
                                 </div>
                                 <p className="lead text-gray-800 mb-5">Page Not Found</p>
-                                <p className="text-gray-500 mb-0">
-                                    Không tìm thấy đường dẫn
-                                </p>
-                                <a href="admin">← Vui lòng trở lại</a>
+                                <h2 className="text-gray-500 mb-0">
+                                    Anh ơi chúng ta lại lạc mất nhau rồi =))
+                                </h2>
+                                <a onClick={goback}>← Quay lại tìm nhau đi anh</a>
                             </div>
                         </div>
                         {/* /.container-fluid */}
