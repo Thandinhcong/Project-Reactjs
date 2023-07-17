@@ -1,22 +1,23 @@
 import React, { useEffect } from 'react'
 import { Link, Outlet, useNavigate } from 'react-router-dom';
-import Clothes from '../layout-client/Header/menu/Clothes';
-import Logo from '../layout-client/Header/menu/Logo';
-import User from '../layout-client/Header/user/user';
+import Clothes from '../../layout-client/Header/menu/Clothes';
+import Logo from '../../layout-client/Header/menu/Logo';
+import User from '../../layout-client/Header/user/user';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
-import Footer from '../layout-client/footer/Footer';
-import Logistics from '../layout-client/main/Logistics';
-import Blog from '../layout-client/main/Blog';
-import { useLocalStorage } from '../useLocalStore/useLocalStore';
+import Footer from '../../layout-client/footer/Footer';
+import Logistics from '../../layout-client/main/Logistics';
+import Blog from '../../layout-client/main/Blog';
+import { useLocalStorage } from '../../useLocalStore/useLocalStore';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { schemaSignin } from '../schemas/products';
-import { FormSignin } from '../../instances/accounts';
-import Header from '../layout-client/Header/Header';
+import Header from '../../layout-client/Header/Header';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "./signin.css";
+import "../signup/signup.css"
+import { FormSignin } from '../../../instances/accounts';
+import { schemaSignin } from '../../schemas/products';
 const Signin = () => {
     const navigate = useNavigate();
     const [user, SetUser] = useLocalStorage('user', null)
@@ -106,7 +107,9 @@ const Signin = () => {
                         <button title="Sign In" type="submit" className="sign-in_btn">
                             <ToastContainer />
                             <span>ĐĂNG NHẬP</span>
+
                         </button>
+                        <Link to="/quen-mat-khau">Quên mật khẩu</Link>
                         <div className="separator">
                             <hr className="line" />
                             <span>Hoặc</span>
@@ -165,7 +168,6 @@ const Signin = () => {
                             <span>Đăng nhập với Apple</span>
                         </button>
                         <span>Bạn chưa có tài khoản ? <Link to="/dang-ki">Đăng kí</Link></span>
-
                     </form>
 
                 </div >

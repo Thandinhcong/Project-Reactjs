@@ -1,7 +1,6 @@
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom"
 import HomePage from "./pages/layout-client/main/home"
-import Signin from "./pages/users/Signin"
-import Signup from "./pages/users/Signup"
+
 import Contacts from "./pages/layout-client/contacts/Contacts"
 import DeltailPage from "./pages/layout-client/main/deltail-product/Deltail-product"
 import LayoutAdmin from "./pages/layout-admin/dashbroand"
@@ -17,6 +16,9 @@ import InfoUser from "./components/client/users/infoUser"
 import ListMember from "./components/admin/member/listMember"
 import UpdateCate from "./components/admin/categories/UpdateCate"
 import UpdateInfoUser from "./components/client/users/Update/updateUser"
+import Signin from "./pages/users/signin/Signin"
+import { Signup } from "./instances/accounts"
+import ForgotPassword from "./pages/users/ForgotPassword"
 
 function App() {
   return (
@@ -28,6 +30,7 @@ function App() {
           <Route index element={<HomePage />} />
           <Route path="signin" element={<Signin />} />
           <Route path="dang-ki" element={<Signup />} />
+          <Route path="quen-mat-khau" element={<ForgotPassword />} />
           <Route path="lien-he" element={<Contacts />} />
           <Route path="chi-tiet-san-pham/:id" element={<DeltailPage />} />
           <Route path="san-pham-yeu-thich" element={<Favorite />} />

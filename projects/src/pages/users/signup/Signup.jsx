@@ -4,10 +4,10 @@ import { useForm } from "react-hook-form";
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { Alert, Button } from 'react-bootstrap';
 import "./signup.css";
-import Header from '../layout-client/Header/Header';
-import Footer from '../layout-client/footer/Footer';
-import { schemaSignup } from '../schemas/products';
-import { Signup } from '../../instances/accounts';
+import Header from '../../layout-client/Header/Header';
+import Footer from '../../layout-client/footer/Footer';
+import { schemaSignup } from '../../schemas/products';
+import { Signup } from '../../../instances/accounts';
 
 const SignupPage = () => {
     const navigate = useNavigate();
