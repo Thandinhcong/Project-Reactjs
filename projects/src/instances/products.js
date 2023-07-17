@@ -1,3 +1,4 @@
+import getUserToken from "./getUserToken";
 import instance from "./instances"
 
 export const getAllProduct = () => {
@@ -9,8 +10,7 @@ export const getOneProduct = (id) => {
     return instance.get(uri);
 }
 export const addProduct = (product) => {
-    const user = JSON.parse(localStorage.getItem('user'));
-    const token = user.accessToken;
+    const token = getUserToken();
     const uri = '/products/';
     return instance.post(uri, product, {
         headers: {
@@ -20,8 +20,7 @@ export const addProduct = (product) => {
     });
 }
 export const updateProduct = (id, product) => {
-    const user = JSON.parse(localStorage.getItem('user'));
-    const token = user.accessToken;
+    const token = getUserToken();
     const uri = '/products/' + id
     return instance.put(uri, product, {
         headers: {
@@ -31,8 +30,7 @@ export const updateProduct = (id, product) => {
     });
 }
 export const deleteProduct = (id) => {
-    const user = JSON.parse(localStorage.getItem('user'));
-    const token = user.accessToken;
+    const token = getUserToken();
     const uri = '/products/' + id
     return instance.delete(uri, {
         headers: {

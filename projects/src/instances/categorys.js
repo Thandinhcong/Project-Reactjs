@@ -1,3 +1,4 @@
+import getUserToken from "./getUserToken"
 import instance from "./instances"
 
 export const ListCates = () => {
@@ -9,8 +10,7 @@ export const ListOneCate = (id) => {
     return instance.get(uri)
 }
 export const addCate = (cate) => {
-    const user = JSON.parse(localStorage.getItem('user'));
-    const token = user.accessToken;
+    const token = getUserToken();
     const uri = "/categorys/"
     return instance.post(uri, cate, {
         headers: {
@@ -20,8 +20,7 @@ export const addCate = (cate) => {
     })
 }
 export const deletetCate = (id) => {
-    const user = JSON.parse(localStorage.getItem('user'));
-    const token = user.accessToken;
+    const token = getUserToken();
     const uri = "/categorys/" + id
     return instance.delete(uri, {
         headers: {
@@ -31,8 +30,7 @@ export const deletetCate = (id) => {
     })
 }
 export const updateCate = (id, cate) => {
-    const user = JSON.parse(localStorage.getItem('user'));
-    const token = user.accessToken;
+    const token = getUserToken();
     const uri = "/categorys/" + id
     return instance.put(uri, cate, {
         headers: {
