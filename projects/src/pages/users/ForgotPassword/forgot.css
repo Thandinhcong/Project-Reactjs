@@ -10,3 +10,11 @@
     color: white;
     background-color: rgb(66, 125, 219);
 }
+
+.success-message,
+.error-message {
+    background-color: rgb(118, 207, 180);
+    height: 30px;
+
+    padding: 5px;
+}

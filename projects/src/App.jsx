@@ -17,8 +17,8 @@ import ListMember from "./components/admin/member/listMember"
 import UpdateCate from "./components/admin/categories/UpdateCate"
 import UpdateInfoUser from "./components/client/users/Update/updateUser"
 import Signin from "./pages/users/signin/Signin"
-import { Signup } from "./instances/accounts"
 import ForgotPassword from "./pages/users/ForgotPassword"
+import SignupPage from "./pages/users/signup/Signup"
 
 function App() {
   return (
@@ -29,7 +29,7 @@ function App() {
         <Route path="/" element={<Outlet />}>
           <Route index element={<HomePage />} />
           <Route path="signin" element={<Signin />} />
-          <Route path="dang-ki" element={<Signup />} />
+          <Route path="dang-ki" element={<SignupPage />} />
           <Route path="quen-mat-khau" element={<ForgotPassword />} />
           <Route path="lien-he" element={<Contacts />} />
           <Route path="chi-tiet-san-pham/:id" element={<DeltailPage />} />

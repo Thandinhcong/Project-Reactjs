@@ -26,3 +26,7 @@ export const updateUser = (id, users) => {
     const uri = "/users/" + id;
     return instance.put(uri, users);
 }
+export const forgotPassword = (user) => {
+    const uri = "/sendEmail/";
+    return instance.post(uri, user)
+}
