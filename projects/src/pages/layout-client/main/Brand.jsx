@@ -12,7 +12,7 @@ const Brand = () => {
         listCategoryAll();
     }, [])
     return (
-        <div className='container'>
+        <div data-aos="fade-up" className='container'>
             <h3 className='text-center mt-5'>DANH MỤC NỔI BẬT</h3>
             <div className='products'>
                 {categorys.map((item) => {

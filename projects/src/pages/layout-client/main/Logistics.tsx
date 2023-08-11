@@ -2,7 +2,7 @@ import React from 'react'
 import "../style.css"
 const Logistics = () => {
     return (
-        <div className='logistics container '>
+        <div data-aos="fade-left" className='logistics container '>
             <div className='logistic-item d-flex'>
                 <img width="20" className='me-2' height="20" src="https://img.icons8.com/ios/50/product--v1.png" alt="product--v1" />
                 <p >CAM KẾT HÀNG CHÍNH HÃNG </p>

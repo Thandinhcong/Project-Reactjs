@@ -42,7 +42,7 @@ const Product = () => {
         setProducts(sortedProducts);
     };
     return (
-        <div className='container'>
+        <div data-aos="fade-up" className='container'>
             <h2 className='text-center m-4'>SẢN PHẨM MỚI</h2>
             <nav className='menu text-center'>
                 <a href="#">TẤT CẢ</a>

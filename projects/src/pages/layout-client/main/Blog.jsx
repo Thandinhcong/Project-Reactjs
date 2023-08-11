@@ -2,7 +2,7 @@ import React from 'react';
 import "../style.css";
 const Blog = () => {
     return (
-        <div className='blog container'>
+        <div data-aos="fade-right" className='blog container'>
             <p>BẢN TIN</p>
             <h5>Đăng ký nhận bản tin của chúng tôi để nhận các tin tức,
                 ưu đãi đặc biệt và các khuyến mãi độc quyền</h5>
