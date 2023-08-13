@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const MenuLeft = () => {
-    return <div className="admin-cate container col-3  pt-5  border">
+    return <div className="admin-cate  container col-3  pt-5  border">
         <Link to="/admin" className="text-decoration-none text-dark">
             <div className="d-flex gap-1 border ">
                 <img width="50" height="50" src="https://img.icons8.com/carbon-copy/100/clothes.png" alt="clothes" />
