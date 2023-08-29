@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { deleteProduct, getAllProduct } from '../../../instances/products';
+import Skeleton from 'react-loading-skeleton';
 const ListProduct = () => {
     const [products, setProducts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1); // Trang hiện tại

@@ -9,7 +9,7 @@ import { schemaUpdateProduct } from '../../../pages/schemas/products'
 import { ListCates } from '../../../instances/categorys'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 const UpdateProduct = () => {
     const { id } = useParams();
     const navigate = useNavigate();
@@ -29,11 +29,12 @@ const UpdateProduct = () => {
         products.image = image;
         try {
             const response = await updateProduct(id, products);
+            console.log(response);
             toast.success("Cập nhật thành công !", {
                 position: toast.POSITION.TOP_RIGHT
             })
-            setLoading(false)
             setTimeout(() => {
+                setLoading(false)
                 navigate('/admin')
             }, 2000);
         } catch (error) {
@@ -75,12 +76,13 @@ const UpdateProduct = () => {
                 <MenuLeft />
                 <section className='col-9 border '>
                     <h3 className='text-center mt-2 mb-2'>Cập nhật sản phẩm</h3>
-                    <form onSubmit={handleSubmit(onHandleSubmit)}>
+                    <form onSubmit={handleSubmit(onHandleSubmit)}  >
                         {loading ? (
-                            <div className="skeleton-container">
-                                <Skeleton height={20} />
-                                <Skeleton height={20} />
-                                <Skeleton height={20} />
+                            <div className="col-9 skeleton-container">
+                                <div className="skeleton" style={{ height: '150px' }}></div>
+                                <div className="skeleton" style={{ height: '150px' }}></div>
+                                <div className="skeleton" style={{ height: '150px' }}></div>
+                                <div className="skeleton" style={{ height: '150px' }}></div>
                             </div>
                         ) : (
                             <div >
@@ -96,6 +98,7 @@ const UpdateProduct = () => {
                                 </div>
                                 <div>
                                     <label htmlFor="name" className='form-lable'> image</label>
+
                                     <input
                                         type="file"
                                         placeholder='Chọn hình ảnh cho sản phẩm'
@@ -103,8 +106,8 @@ const UpdateProduct = () => {
                                         {...register("image")}
                                         onChange={onChangeFile}
                                     />
+                                    <img src={image} alt="" width={100} />
                                     <div>
-
                                         {errors.image && errors.image.message}
                                     </div>
                                 </div>
@@ -126,9 +129,9 @@ const UpdateProduct = () => {
                                             className='form-select'
                                             {...register('categoryId')}
                                         >
-                                            {categories.map((item, index) => {
+                                            {categories.map((item) => {
                                                 return (
-                                                    <option key={index} value={item._id}>{item.name}</option>
+                                                    <option key={item._id} value={item._id}>{item.name}</option>
                                                 );
                                             })}
                                         </select>
@@ -157,7 +160,7 @@ const UpdateProduct = () => {
                     </form>
                 </section>
             </div>
-        </div>
+        </div >
     );
 }
 

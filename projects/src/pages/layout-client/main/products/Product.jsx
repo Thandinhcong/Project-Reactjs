@@ -33,12 +33,12 @@ const Product = () => {
         setSortOption(selectedOption);
 
         let sortedProducts = [...products];
+
         if (selectedOption === "highestPrice") {
             sortedProducts.sort((a, b) => b.price - a.price);
         } else if (selectedOption === "lowestPrice") {
             sortedProducts.sort((a, b) => a.price - b.price);
         }
-
         setProducts(sortedProducts);
     };
     return (

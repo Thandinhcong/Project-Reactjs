@@ -10,7 +10,7 @@ import Signin from './user/user';
 const Header = () => {
     return (
         <>
-            <div data-aos="fade-down" className='Header container-fluid'>
+            <div className='Header container-fluid'>
                 <section className='header '>
                     <Clothes />
                     <Logo />
