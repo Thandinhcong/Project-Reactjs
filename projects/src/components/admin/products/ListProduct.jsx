@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { deleteProduct, getAllProduct } from '../../../instances/products';
 import Skeleton from 'react-loading-skeleton';
 const ListProduct = () => {
     const [products, setProducts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1); // Trang hiện tại
     const [itemsPerPage] = useState(4);
-
+    const navigate = useNavigate();
     const ListProduct = async () => {
         const { data } = await getAllProduct();
         setProducts(data.products);
@@ -33,10 +33,16 @@ const ListProduct = () => {
 
     const paginate = (pageNumber) => {
         setCurrentPage(pageNumber);
+        navigate(`/admin?page=${pageNumber}`);
     };
 
     useEffect(() => {
         ListProduct();
+        const searchParams = new URLSearchParams(window.location.search);
+        const pageParam = searchParams.get('page');
+        if (pageParam) {
+            setCurrentPage(parseInt(pageParam));
+        }
     }, []);
 
     return (
@@ -92,7 +98,7 @@ const ListProduct = () => {
                 <div>
                     {Array.from({ length: totalPages }, (_, index) => (
                         <button
-                            className="btn btn-primary me-2"
+                            className={`btn btn-primary me-2 ${currentPage === index + 1 ? 'active' : ''}`}
                             key={index + 1}
                             onClick={() => paginate(index + 1)}
                         >
