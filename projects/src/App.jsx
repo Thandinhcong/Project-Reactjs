@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom"
 import HomePage from "./pages/layout-client/main/home"
@@ -21,12 +21,14 @@ import UpdateInfoUser from "./components/client/users/Update/updateUser"
 import Signin from "./pages/users/signin/Signin"
 import ForgotPassword from "./pages/users/ForgotPassword"
 import SignupPage from "./pages/users/signup/Signup"
+import Loading from './loading/nextPage';
+import Card from './pages/layout-client/main/card';
 
 function App() {
+
   return (
     <BrowserRouter>
       <Routes>
-
         {/* customer */}
         <Route path="/" element={<Outlet />}>
           <Route index element={<HomePage />} />
@@ -38,6 +40,8 @@ function App() {
           <Route path="san-pham-yeu-thich" element={<Favorite />} />
           <Route path="thong-tin-nguoi-dung" element={<InfoUser />} />
           <Route path="cap-nhat-thong-tin-nguoi-dung/:id" element={<UpdateInfoUser />} />
+          <Route path="loading" element={<Loading />} />
+          <Route path='card' element={<Card />} />
         </Route>
         {/* admin */}
         <Route path="admin" element={<LayoutAdminCheck />}>

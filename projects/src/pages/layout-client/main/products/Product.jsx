@@ -41,6 +41,7 @@ const Product = () => {
         }
         setProducts(sortedProducts);
     };
+
     return (
         <div data-aos="fade-up" className='container'>
             <h2 className='text-center m-4'>SẢN PHẨM MỚI</h2>
@@ -62,7 +63,12 @@ const Product = () => {
                 {productsToShow.map((item, index) => {
                     return (
                         <div className='product-list-item' key={index}>
-                            <Link to={`/chi-tiet-san-pham/${item._id}`}><img src={item.image} className='mb-2' alt="ảnh sản phẩm" /></Link>
+                            <Link to={
+                                {
+                                    pathname: `/chi-tiet-san-pham/${item._id}`,
+                                    search: `?Name=${encodeURIComponent(item.name)}`
+                                }
+                            }><img src={item.image} className='mb-2' alt="ảnh sản phẩm" /></Link>
                             <div className='products-list-icon d-flex justify-content-between'>
                                 <p className='text-secondary'>KHÁC</p>
                                 <span className="material-symbols-outlined">

@@ -1,0 +1,32 @@
+.cardd {
+    background-color: rgb(234 234 234);
+}
+
+.card-table {
+    padding: 10px;
+    margin-left: 10px;
+}
+
+.card-pay {
+    padding: 10px;
+    border: 1px solid #fff;
+    background-color: #fff;
+    margin-bottom: 10px;
+}
+
+.card-pay input {
+    padding: 10px;
+    width: 100%;
+}
+
+.card-pay input:focus {
+    outline: none;
+}
+
+.card-pay button {
+    width: 100%;
+    padding: 7px;
+    border: none;
+    background-color: rgb(117, 182, 135);
+    color: #fff;
+}

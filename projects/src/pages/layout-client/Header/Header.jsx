@@ -35,7 +35,9 @@ const Header = () => {
                         <Link className="navbar-brand fs-4 text-center fw-bold" to="/">
                             Thandinh.
                         </Link>
-                        <FontAwesomeIcon icon={faCartShopping} className='me-2' />
+                        <Link to={`/card`} className='text-decoration-none'>
+                            <FontAwesomeIcon icon={faCartShopping} className='me-2' />
+                        </Link>
                         <div className="collapse navbar-collapse p-3 " id="navbarSupportedContent">
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li className="nav-item">
