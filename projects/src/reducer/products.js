@@ -17,6 +17,11 @@ const productsReducer = (state = initialState, action) => {
                 drafState.products.push(action.payload)
                 break
             }
+            case "products/deleteProduct": {
+                const id = action.payload;
+                drafState.products = state.products.filter((item) => item.id !== id);
+                break
+            }
             default: return state;
         }
     })

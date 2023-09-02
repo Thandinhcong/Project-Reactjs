@@ -1,23 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { deleteProduct, getAllProduct } from '../../../instances/products';
-import Skeleton from 'react-loading-skeleton';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchProducts } from '../../../actions/products';
+
 const ListProduct = () => {
-    const [products, setProducts] = useState([]);
-    const [currentPage, setCurrentPage] = useState(1); // Trang hiện tại
+    const dispatch = useDispatch();
+    const { products } = useSelector(state => state.products);
+    const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage] = useState(4);
     const navigate = useNavigate();
-    const ListProduct = async () => {
-        const { data } = await getAllProduct();
-        setProducts(data.products);
-    };
+
     const handleDeleteProduct = async (id) => {
         try {
             await deleteProduct(id)
             const confilm = window.confirm("Bạn có muốn xóa không ?")
             if (confilm) {
                 const updateProduct = products.filter((item) => item._id !== id)
-                setProducts(updateProduct);
+                dispatch({ type: "products/fetchProducts", payload: updateProduct })
                 await products.deleteOne
                 alert("Xóa thành công")
             }
@@ -37,7 +37,7 @@ const ListProduct = () => {
     };
 
     useEffect(() => {
-        ListProduct();
+        dispatch(fetchProducts())
         const searchParams = new URLSearchParams(window.location.search);
         const pageParam = searchParams.get('page');
         if (pageParam) {
