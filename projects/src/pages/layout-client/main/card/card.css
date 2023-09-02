@@ -30,3 +30,11 @@
     background-color: rgb(117, 182, 135);
     color: #fff;
 }
+
+.card-table-button {}
+
+.card-table-button button {
+    border: 1px solid #000;
+    background-color: #fff;
+    width: 30px;
+}

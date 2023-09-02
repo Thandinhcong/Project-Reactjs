@@ -1,18 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import "../main.css";
 import "./product.css";
 import { Link } from 'react-router-dom';
-import { getAllProduct } from '../../../../instances/products';
+import { VND } from '../../../../instances/products';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchProducts } from '../../../../actions/products';
 
 const Product = () => {
-    const [products, setProducts] = useState([]);
+    const dispatch = useDispatch();
+    const { products } = useSelector((state) => state.products);
     const [visibleProducts, setVisibleProducts] = useState(10);
     const [sortOption, setSortOption] = useState("");
-
-    const ListProductClient = async () => {
-        const { data } = await getAllProduct();
-        setProducts(data.products)
-    }
 
     const handleLoadMore = () => {
         setVisibleProducts(prevCount => prevCount + 5);
@@ -21,13 +18,9 @@ const Product = () => {
     const productsToShow = products.slice(0, visibleProducts);
 
     useEffect(() => {
-        ListProductClient();
+        dispatch(fetchProducts())
     }, [])
 
-    const VND = new Intl.NumberFormat('vi-VN', {
-        style: "currency",
-        currency: "VND"
-    })
     const handleSortOptionChange = (event) => {
         const selectedOption = event.target.value;
         setSortOption(selectedOption);
@@ -39,7 +32,7 @@ const Product = () => {
         } else if (selectedOption === "lowestPrice") {
             sortedProducts.sort((a, b) => a.price - b.price);
         }
-        setProducts(sortedProducts);
+        dispatch({ type: "products/fetchProducts", payload: sortedProducts });
     };
 
     return (
