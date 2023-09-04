@@ -1,5 +1,5 @@
 import axios from "axios";
-import { addProduct, getAllProduct } from "../instances/products";
+import { addProduct, deleteProduct, getAllProduct } from "../instances/products";
 
 export const fetchProducts = () => async (dispatch) => {
     try {
@@ -12,7 +12,7 @@ export const fetchProducts = () => async (dispatch) => {
 };
 export const ProductAdd = (product) => async (dispatch) => {
     try {
-        const data = await addProduct("/products", product);
+        const data = await addProduct(product);
         dispatch({ type: "products/addProduct", payload: data });
     } catch (error) {
         console.log(error);
@@ -20,13 +20,13 @@ export const ProductAdd = (product) => async (dispatch) => {
     } finally {
     }
 };
-// export const deleteProduct = (id) => async (dispatch) => {
-//     try {
-//         const data = await axios.delete("http://localhost:8080/products/" + id);
-//         dispatch({ type: "products/deleteProduct", payload: id });
-//         console.log("data delete :", data);
-//     } catch (error) {
-//         console.log(error);
-//     } finally {
-//     }
-// };
+export const DeleteProduct = (id) => async (dispatch) => {
+    try {
+        const data = await deleteProduct();
+        dispatch({ type: "products/deleteProduct", payload: id });
+        console.log("data delete :", data);
+    } catch (error) {
+        console.log(error);
+    } finally {
+    }
+};

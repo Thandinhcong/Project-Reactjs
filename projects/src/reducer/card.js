@@ -9,7 +9,7 @@ const cardReducer = (state = initialState, action) => {
             case "card/add":
                 const product = action.payload;
                 // tìm index trong giỏ hàng 
-                const exitsProductIndex = draftState.items.findIndex(item => item.id === action.payload.id);
+                const exitsProductIndex = draftState.items.findIndex(item => item.id === product.id);
                 // nếu không có sản phẩm nào trong giỏ hàng thì thêm nó vào
                 if (exitsProductIndex === -1) {
                     draftState.items.push(product)

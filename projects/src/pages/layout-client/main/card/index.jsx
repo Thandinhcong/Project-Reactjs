@@ -3,6 +3,7 @@ import Header from '../../Header/Header'
 import Footer from '../../footer/Footer'
 import './card.css'
 import { useDispatch, useSelector } from 'react-redux'
+import { VND } from '../../../../instances/products'
 const Card = () => {
     const dispatch = useDispatch();
     const { items } = useSelector((state) => state.card)
@@ -19,7 +20,7 @@ const Card = () => {
                                     <th>Sản phẩm</th>
                                     <th>Giá</th>
                                     <th>Số lượng</th>
-                                    <th>Tổng tiền</th>
+
                                     <th></th>
                                 </tr>
                             </thead>
@@ -27,25 +28,25 @@ const Card = () => {
                                 {items?.map((item) => (
                                     <tr key={item.id}>
                                         <td className='d-flex '>
-                                            <img src="https://d2308c07sw6r8q.cloudfront.net/media/catalog/product/cache/088e653b19efbf8c3f3f59980f4bd43b/S/a/Sandro_SHACH00255-10_V_1.webp" className='me-3' alt="" width={90} />
+                                            <img src={item.image} className='me-3' alt="" width={90} />
                                             <div>
                                                 <p className='fw-bolder'>{item.name}</p>
                                                 <p>Màu sắc: <span className='fw-bolder'>Trắng</span></p>
                                                 <p>Khích thước: 42</p>
                                             </div>
                                         </td>
-                                        <td>{item.price}</td>
+                                        <td>{VND.format(item.price)}</td>
                                         <td className='card-table-button'>
                                             <button
                                                 className='me-2'
-                                                onClick={() => dispatch({ type: "card/increase", payload: item.id })}
-                                            >-</button>
-                                            <span className='me-2'>2</span>
-                                            <button
                                                 onClick={() => dispatch({ type: "card/decrease", payload: item.id })}
+                                            >-</button>
+                                            <span className='me-2'>{item.quantity}</span>
+                                            <button
+                                                onClick={() => dispatch({ type: "card/increase", payload: item.id })}
                                             >+</button>
                                         </td>
-                                        <td>100.000đ</td>
+
                                         <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
                                             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
                                         </svg></td>
@@ -59,7 +60,12 @@ const Card = () => {
                         <hr />
                         <div className='d-flex justify-content-between pt-4'>
                             <p>Tổng tiền</p>
-                            <p>8.430.000đ</p>
+                            <p>{VND.format(
+                                items.reduce(function (sum, item) {
+                                    return sum + item.price * item.quantity
+                                }, 0)
+                            )
+                            }</p>
                         </div>
                         <div className=''>Mã giảm giá</div>
                         <input type="text" placeholder='Nhập mã giảm giá...' className='mt-1 mb-3' />

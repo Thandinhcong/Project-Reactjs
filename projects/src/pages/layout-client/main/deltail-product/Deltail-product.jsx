@@ -4,25 +4,14 @@ import Footer from '../../footer/Footer';
 import "./deltail.css";
 import { useParams } from 'react-router-dom';
 import { getOneProduct, VND } from '../../../../instances/products';
+import { useDispatch } from 'react-redux';
 const DeltailPage = () => {
-    const [counts, setCount] = useState(1)
+    const dispatch = useDispatch();
     const [product, setProducts] = useState({});
     const { id } = useParams();
     const fetchProduct = async () => {
         const { data } = await getOneProduct(id);
         setProducts(data.products)
-    }
-    const handleDecrease = () => {
-        if (counts > 1) {
-            setCount(counts - 1)
-        }
-    }
-    const handleIncrease = () => {
-        if (counts === 10) {
-            alert("Tối đa mua 10 sản phẩm");
-            return;
-        }
-        setCount(counts + 1)
     }
     useEffect(() => {
         fetchProduct();
@@ -55,13 +44,11 @@ const DeltailPage = () => {
                     </span>)
                     </p>
                     <span>{product.description}</span>
-                    <div className='d-flex mt-5 mb-5'>
-                        <div className='count'>
-                            <button onClick={handleDecrease} >-</button>
-                            <label htmlFor="">{counts}</label>
-                            <button onClick={handleIncrease}>+</button>
-                        </div>
-                        <button className='ms-5 btn btn-dark'>THÊM VÀO GIỎ</button>
+                    <div className='mt-5 mb-5'>
+                        <button
+                            onClick={() => dispatch({ type: "card/add", payload: { ...product, quantity: 1 } })}
+                            className='ms-5 btn btn-dark'
+                        >THÊM VÀO GIỎ</button>
                     </div>
                     <hr />
                 </div>

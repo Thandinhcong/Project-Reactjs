@@ -11,20 +11,21 @@ const ListProduct = () => {
     const [itemsPerPage] = useState(4);
     const navigate = useNavigate();
 
-    const handleDeleteProduct = async (id) => {
-        try {
-            await deleteProduct(id)
-            const confilm = window.confirm("Bạn có muốn xóa không ?")
-            if (confilm) {
-                const updateProduct = products.filter((item) => item._id !== id)
-                dispatch({ type: "products/fetchProducts", payload: updateProduct })
-                await products.deleteOne
-                alert("Xóa thành công")
-            }
-        } catch (error) {
-            console.log(error);
-        }
-    }
+    // const handleDeleteProduct = (id) => {
+    //     try {
+    //         // await deleteProduct(id)
+    //         const confilm = window.confirm("Bạn có muốn xóa không ?")
+    //         if (confilm) {
+    //             dispatch(deleteProduct(id))
+    //             // const updateProduct = products.filter((item) => item._id !== id)
+    //             // dispatch({ type: "products/fetchProducts", payload: updateProduct })
+    //             // await products.deleteOne
+    //             // alert("Xóa thành công")
+    //         }
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // }
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentItems = products.slice(indexOfFirstItem, indexOfLastItem);
@@ -87,7 +88,7 @@ const ListProduct = () => {
                                 <td style={{ width: "30%" }}>{item.salient_features}</td>
                                 <td style={{ width: "10%" }} className='d-flex'>
                                     <Link to={`/admin/cap-nhat-san-pham/${item._id}`} className=' me-2'><img width="15" height="15" src="https://img.icons8.com/ios/50/edit--v1.png" alt="edit--v1" /></Link>
-                                    <button onClick={() => handleDeleteProduct(item._id)} className='border-0 bg-white'><span className="material-symbols-outlined">delete</span></button>
+                                    <button onClick={() => dispatch(deleteProduct(item._id))} className='border-0 bg-white'><span className="material-symbols-outlined">delete</span></button>
                                 </td>
                             </tr>
                         ))}
