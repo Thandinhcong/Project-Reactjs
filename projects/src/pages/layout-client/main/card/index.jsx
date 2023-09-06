@@ -1,12 +1,42 @@
-import React from 'react'
-import Header from '../../Header/Header'
-import Footer from '../../footer/Footer'
-import './card.css'
-import { useDispatch, useSelector } from 'react-redux'
-import { VND } from '../../../../instances/products'
-const Card = () => {
+import React, { useEffect } from 'react'; // Import useEffect
+import { useDispatch, useSelector } from 'react-redux';
+import { VND } from '../../../../instances/products';
+import Header from '../../Header/Header';
+import Footer from '../../footer/Footer';
+import "./card.css"
+const Cart = () => {
     const dispatch = useDispatch();
-    const { items } = useSelector((state) => state.card)
+    const { items } = useSelector((state) => state.cart);
+
+    useEffect(() => {
+        const getCartFromCookie = () => {
+            const cookies = document.cookie.split(';');
+            for (const cookie of cookies) {
+                const [name, value] = cookie.trim().split('=');
+                if (name === 'cart') {
+                    const cartData = JSON.parse(decodeURIComponent(value));
+                    break;
+                }
+            }
+            return [];
+        };
+
+        const cartFromCookie = getCartFromCookie();
+        if (cartFromCookie.length > 0) {
+        }
+    }, []);
+
+    const updateCartAndSaveToCookie = (updatedCart) => {
+        const cartJSON = JSON.stringify(updatedCart);
+
+        const minutes = 30;
+        const expirationDate = new Date();
+        expirationDate.setTime(expirationDate.getTime() + minutes * 60 * 1000);
+
+        // Đặt cookie với thông tin giỏ hàng và thời gian tồn tại
+        document.cookie = `cart=${encodeURIComponent(cartJSON)}; expires=${expirationDate.toUTCString()}; path=/`;
+    };
+
     return (
         <div className='container-fluid'>
             <Header />
@@ -39,15 +69,15 @@ const Card = () => {
                                         <td className='card-table-button'>
                                             <button
                                                 className='me-2'
-                                                onClick={() => dispatch({ type: "card/decrease", payload: item.id })}
+                                                onClick={() => dispatch({ type: "cart/decrease", payload: item.id })}
                                             >-</button>
                                             <span className='me-2'>{item.quantity}</span>
                                             <button
-                                                onClick={() => dispatch({ type: "card/increase", payload: item.id })}
+                                                onClick={() => dispatch({ type: "cart/increase", payload: item.id })}
                                             >+</button>
                                         </td>
 
-                                        <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                                        <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-x-circle-fill" viewBox="0 0 16 16">
                                             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
                                         </svg></td>
                                     </tr>
@@ -81,6 +111,6 @@ const Card = () => {
             <Footer />
         </div>
     )
-}
+};
 
-export default Card
+export default Cart;

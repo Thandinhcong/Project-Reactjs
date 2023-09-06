@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { deleteProduct, getAllProduct } from '../../../instances/products';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchProducts } from '../../../actions/products';
+import { DeleteProduct, fetchProducts } from '../../../actions/products';
 
 const ListProduct = () => {
     const dispatch = useDispatch();
@@ -11,21 +10,6 @@ const ListProduct = () => {
     const [itemsPerPage] = useState(4);
     const navigate = useNavigate();
 
-    // const handleDeleteProduct = (id) => {
-    //     try {
-    //         // await deleteProduct(id)
-    //         const confilm = window.confirm("Bạn có muốn xóa không ?")
-    //         if (confilm) {
-    //             dispatch(deleteProduct(id))
-    //             // const updateProduct = products.filter((item) => item._id !== id)
-    //             // dispatch({ type: "products/fetchProducts", payload: updateProduct })
-    //             // await products.deleteOne
-    //             // alert("Xóa thành công")
-    //         }
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // }
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentItems = products.slice(indexOfFirstItem, indexOfLastItem);
@@ -36,7 +20,16 @@ const ListProduct = () => {
         setCurrentPage(pageNumber);
         navigate(`/admin?page=${pageNumber}`);
     };
+    const handleDeleteProduct = (productId) => {
+        const confilm = window.confirm("Bạn có muốn xóa không ?");
+        if (confilm) {
+            dispatch(DeleteProduct(productId));
 
+            const updatedProducts = products.filter((product) => product._id !== productId);
+            dispatch({ type: 'products/fetchProducts', payload: updatedProducts });
+            alert("Xóa thành công");
+        }
+    };
     useEffect(() => {
         dispatch(fetchProducts())
         const searchParams = new URLSearchParams(window.location.search);
@@ -87,8 +80,21 @@ const ListProduct = () => {
                                 <td style={{ width: "30%" }}>{item.description}</td>
                                 <td style={{ width: "30%" }}>{item.salient_features}</td>
                                 <td style={{ width: "10%" }} className='d-flex'>
-                                    <Link to={`/admin/cap-nhat-san-pham/${item._id}`} className=' me-2'><img width="15" height="15" src="https://img.icons8.com/ios/50/edit--v1.png" alt="edit--v1" /></Link>
-                                    <button onClick={() => dispatch(deleteProduct(item._id))} className='border-0 bg-white'><span className="material-symbols-outlined">delete</span></button>
+                                    <Link
+                                        to={`/admin/cap-nhat-san-pham/${item._id}`}
+                                        className=' me-2'
+                                    >
+                                        <img
+                                            width="15"
+                                            height="15"
+                                            src="https://img.icons8.com/ios/50/edit--v1.png"
+                                            alt="edit--v1"
+                                        />
+                                    </Link>
+                                    <button
+                                        onClick={() =>
+                                            handleDeleteProduct(item._id)}
+                                        className='border-0 bg-white'><span className="material-symbols-outlined">delete</span></button>
                                 </td>
                             </tr>
                         ))}

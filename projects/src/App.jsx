@@ -22,7 +22,7 @@ import Signin from "./pages/users/signin/Signin"
 import ForgotPassword from "./pages/users/ForgotPassword"
 import SignupPage from "./pages/users/signup/Signup"
 import Loading from './loading/nextPage';
-import Card from './pages/layout-client/main/card';
+import Cart from './pages/layout-client/main/card';
 
 function App() {
 
@@ -41,7 +41,7 @@ function App() {
           <Route path="thong-tin-nguoi-dung" element={<InfoUser />} />
           <Route path="cap-nhat-thong-tin-nguoi-dung/:id" element={<UpdateInfoUser />} />
           <Route path="loading" element={<Loading />} />
-          <Route path='card' element={<Card />} />
+          <Route path='gio-hang' element={<Cart />} />
         </Route>
         {/* admin */}
         <Route path="admin" element={<LayoutAdminCheck />}>

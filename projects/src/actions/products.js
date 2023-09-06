@@ -22,9 +22,8 @@ export const ProductAdd = (product) => async (dispatch) => {
 };
 export const DeleteProduct = (id) => async (dispatch) => {
     try {
-        const data = await deleteProduct();
+        const data = await deleteProduct(id);
         dispatch({ type: "products/deleteProduct", payload: id });
-        console.log("data delete :", data);
     } catch (error) {
         console.log(error);
     } finally {

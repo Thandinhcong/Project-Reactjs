@@ -135,7 +135,6 @@ export const UpdateProduct = async (req, res) => {
 }
 export const deleteProduct = async (req, res) => {
     try {
-        // Xóa sản phẩm từ bảng sản phẩm (products)
         const deletedProduct = await Product.findByIdAndRemove(req.params.id);
 
         if (!deletedProduct) {
@@ -143,12 +142,10 @@ export const deleteProduct = async (req, res) => {
                 message: "Không có sản phẩm nào",
             });
         }
-
-        // Cập nhật danh mục (category) sau khi xóa sản phẩm
         const updatedCategory = await Category.findOneAndUpdate(
-            { products: req.params.id }, // Tìm danh mục chứa sản phẩm được xóa
-            { $pull: { products: req.params.id } }, // Loại bỏ sản phẩm khỏi mảng products
-            { new: true } // Trả về danh mục đã được cập nhật
+            { products: req.params.id },
+            { $pull: { products: req.params.id } },
+            { new: true }
         );
 
         if (!updatedCategory) {

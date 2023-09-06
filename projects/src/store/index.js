@@ -1,6 +1,6 @@
 import { legacy_createStore as createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk';
-import cardReducer from '../reducer/card';
+import cartReducer from '../reducer/cart';
 import productsReducer from '../reducer/products';
 
 
@@ -14,7 +14,7 @@ const enhancer = composeEnhancers(
 );
 const rootReducer = combineReducers({
     products: productsReducer,
-    card: cardReducer,
+    cart: cartReducer,
 })
 
 const store = createStore(rootReducer, enhancer)

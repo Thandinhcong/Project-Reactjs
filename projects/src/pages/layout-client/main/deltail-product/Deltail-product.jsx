@@ -46,7 +46,7 @@ const DeltailPage = () => {
                     <span>{product.description}</span>
                     <div className='mt-5 mb-5'>
                         <button
-                            onClick={() => dispatch({ type: "card/add", payload: { ...product, quantity: 1 } })}
+                            onClick={() => dispatch({ type: "cart/add", payload: { ...product, quantity: 1 } })}
                             className='ms-5 btn btn-dark'
                         >THÊM VÀO GIỎ</button>
                     </div>

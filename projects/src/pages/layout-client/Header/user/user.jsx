@@ -75,7 +75,7 @@ const User = () => {
                         <FontAwesomeIcon icon={faUser} className='me-4' />
                     </Link>
                 )}
-                <Link to='/card' className='cart text-dark me-4'>
+                <Link to='/gio-hang' className='cart text-dark me-4'>
                     <FontAwesomeIcon icon={faCartShopping} />
                 </Link>
                 <Link to='/san-pham-yeu-thich' className='favoriteicon text-decoration-none text-dark'>
